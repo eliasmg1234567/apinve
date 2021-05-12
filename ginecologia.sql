@@ -107,3 +107,21 @@ COMMIT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+/* CREAR TABLA DE USUARIOS 
+PARA MAS INFO https://github.com/xcheko51x/Login-Sencillo-Angular/tree/master/Angular*/
+
+create database pruebas;
+
+use pruebas;
+
+create table usuarios(
+	idUsuario int primary key auto_increment,
+	nombre varchar(50) not null,
+	telefono varchar(15) not null,
+	email varchar(30) not null,
+	usuario varchar(50) not null,
+	contrasena varchar(15) not null
+);
+
+insert into usuarios (nombre, telefono, email, usuario, contrasena) values('Walter', '123456789', 'walter@mail.com', 'walter', 'walter');

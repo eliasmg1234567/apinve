@@ -10,8 +10,8 @@
     require("conexion.php"); //Importa el archivo de la conexion a la BD
     $conexion=conexion();
 
-    mysqli_query($conexion, "UPDATE `historial` 
-    SET     laborhistorial='$params->laborhistorial',
+    mysqli_query($conexion, "UPDATE historial 
+    SET laborhistorial='$params->laborhistorial',
             pesohistorial='$params->pesohistorial',
             tallahistorial='$params->tallahistorial',
             fchistorial='$params->fchistorial',
@@ -37,13 +37,13 @@
             fechahistorial='$params->fechahistorial',
             diagnostico='$params->diagnostico'
 
-            WHERE idphistorial=$params->idhistortial");
+            WHERE idhistorial=$params->idhistorial");
     
     class Result {}
 
     $response = new Result();
     $response->resultado = 'OK';
-    $response->mensaje = 'Expediente editado';
+    $response->mensaje = 'Historial editado';
     
     //Envio de informacion del JSON
     header('Content-Type: application/json');
