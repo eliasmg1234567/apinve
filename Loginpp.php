@@ -6,23 +6,33 @@
  
   $params = json_decode($json); // DECODIFICA EL JSON Y LO GUARADA EN LA VARIABLE
   
-  require("conexionp.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
+  include("conexionp.php"); // IMPORTA EL ARCHIVO CON LA CONEXION A LA DB
+//   $usuario=array(
+//       "usuario"=>'walter',
+//       "password"=>'walter'
+//   );
+//     $params=(object)$usuario;
 
-  // CREA LA CONEXION
+   // CREA LA CONEXION
   
   // REALIZA LA QUERY A LA DB
-  $resultado = pg_query($conexion, "SELECT * FROM public.psg_usuario WHERE nombre_usuario='$params->usuario' AND password='$params->password'");
+//   $resultado = pg_query($base_de_datos, "SELECT * FROM public.usuarios WHERE nombre_usuario='$params->usuario' AND contrasena='$params->password'");
+  $resultado = $base_de_datos->prepare( "SELECT * FROM public.usuarios WHERE nombre_usuario=:usuario AND password=:password");
+  $resultado->execute([":usuario"=>$params->usuario,":password"=>$params->password]);
+//   $resultado=$resultado->fetchAll(PDO::FETCH_OBJ);
  
+//   var_dump($resultado);
+//   die();
 
+  
     class Result {}
     
     // GENERA LOS DATOS DE RESPUESTA
     $response = new Result();
     
-    if(pg_numrows($resultado) > 0) {
+    if($resultado->rowCount() > 0) {
         $response->resultado = 'OK';
         $response->mensaje = 'LOGIN EXITOSO';
-        
     } else {
         $response->resultado = 'FAIL';
         $response->mensaje = 'LOGIN FALLIDO';
