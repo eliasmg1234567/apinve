@@ -11,7 +11,7 @@
    // CREA LA CONEXION
   
   // REALIZA LA QUERY A LA DB
-  $resultado = pg_query($conexion, "SELECT * FROM public.usuarios WHERE nombre_usuario='$params->usuario' AND password='$params->password'");
+  $resultado = pg_query($conexion, "SELECT * FROM public.psg_usuario WHERE nombre_usuario='$params->usuario' AND password='$params->password'");
  
 
     class Result {}
