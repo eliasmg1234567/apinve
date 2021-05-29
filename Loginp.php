@@ -11,8 +11,9 @@
    // CREA LA CONEXION
   
   // REALIZA LA QUERY A LA DB
-  $resultado = pg_query($conexion, "SELECT * FROM usuarios WHERE usuario='$params->usuario' AND contrasena='$params->password'");
+  $resultado = pg_query($conexion, "SELECT * FROM public.usuarios WHERE nombre_usuario='$params->usuario' AND password='$params->password'");
  
+
     class Result {}
     
     // GENERA LOS DATOS DE RESPUESTA
@@ -21,6 +22,7 @@
     if(pg_num_rows($resultado) > 0) {
         $response->resultado = 'OK';
         $response->mensaje = 'LOGIN EXITOSO';
+        
     } else {
         $response->resultado = 'FAIL';
         $response->mensaje = 'LOGIN FALLIDO';
