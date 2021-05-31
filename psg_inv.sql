@@ -12,7 +12,7 @@
  Target Server Version : 110011
  File Encoding         : 65001
 
- Date: 28/05/2021 21:45:42
+ Date: 31/05/2021 11:28:43
 */
 
 
@@ -40,30 +40,14 @@ DROP TABLE IF EXISTS "public"."psg_entrada";
 CREATE TABLE "public"."psg_entrada" (
   "id_entrada" int2 NOT NULL,
   "fecha_entrada" date,
-  "id_tipo_mov" int2,
   "cantidad_entrada" varchar(255) COLLATE "pg_catalog"."default",
-  "id_oficina" int2,
-  "id_material" int2
+  "id_material" int2,
+  "tipo_movimiento" varchar(255) COLLATE "pg_catalog"."default"
 )
 ;
 
 -- ----------------------------
 -- Records of psg_entrada
--- ----------------------------
-
--- ----------------------------
--- Table structure for psg_inventario
--- ----------------------------
-DROP TABLE IF EXISTS "public"."psg_inventario";
-CREATE TABLE "public"."psg_inventario" (
-  "id_inventario" int2 NOT NULL,
-  "id_movimiento_material" int2,
-  "fecha_inventario" date
-)
-;
-
--- ----------------------------
--- Records of psg_inventario
 -- ----------------------------
 
 -- ----------------------------
@@ -139,14 +123,14 @@ CREATE TABLE "public"."psg_movimiento_material" (
 DROP TABLE IF EXISTS "public"."psg_oficina";
 CREATE TABLE "public"."psg_oficina" (
   "id_oficina" int2 NOT NULL,
-  "nombre_oficina" varchar(255) COLLATE "pg_catalog"."default",
-  "id_usuario" int2
+  "nombre_oficina" varchar(255) COLLATE "pg_catalog"."default"
 )
 ;
 
 -- ----------------------------
 -- Records of psg_oficina
 -- ----------------------------
+INSERT INTO "public"."psg_oficina" VALUES (1, 'oficina central');
 
 -- ----------------------------
 -- Table structure for psg_permiso
@@ -183,6 +167,15 @@ CREATE TABLE "public"."psg_permiso_cargo" (
 -- ----------------------------
 -- Records of psg_permiso_cargo
 -- ----------------------------
+INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 1);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 2);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 3);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 4);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 5);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 6);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 7);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (2, 4);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (2, 5);
 
 -- ----------------------------
 -- Table structure for psg_proveedor
@@ -208,10 +201,9 @@ DROP TABLE IF EXISTS "public"."psg_salida";
 CREATE TABLE "public"."psg_salida" (
   "id_salida" int2 NOT NULL,
   "fecha_salida" date,
-  "id_tipo_mov" int2,
   "cantidad_salida" varchar(255) COLLATE "pg_catalog"."default",
-  "id_oficina" int2,
-  "id_material" int2
+  "id_material" int2,
+  "tipo_movimiento" varchar(255) COLLATE "pg_catalog"."default"
 )
 ;
 
@@ -234,20 +226,6 @@ CREATE TABLE "public"."psg_tipo_material" (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for psg_tipo_movimiento
--- ----------------------------
-DROP TABLE IF EXISTS "public"."psg_tipo_movimiento";
-CREATE TABLE "public"."psg_tipo_movimiento" (
-  "id_tipo_mov" int2 NOT NULL,
-  "desc_tipo_mov" varchar(255) COLLATE "pg_catalog"."default"
-)
-;
-
--- ----------------------------
--- Records of psg_tipo_movimiento
--- ----------------------------
-
--- ----------------------------
 -- Table structure for psg_usuario
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."psg_usuario";
@@ -259,16 +237,17 @@ CREATE TABLE "public"."psg_usuario" (
   "email_usuario" varchar(255) COLLATE "pg_catalog"."default",
   "id_cargo" int2,
   "password" varchar(255) COLLATE "pg_catalog"."default",
-  "estado_usuario" varchar(16) COLLATE "pg_catalog"."default"
+  "estado_usuario" varchar(16) COLLATE "pg_catalog"."default",
+  "id_oficina" int2
 )
 ;
 
 -- ----------------------------
 -- Records of psg_usuario
 -- ----------------------------
-INSERT INTO "public"."psg_usuario" VALUES (1, 'walter', 'paco', '12345678', 'walter@gmail.com', 1, 'walter', 'activo');
-INSERT INTO "public"."psg_usuario" VALUES (2, 'brayan', 'mamani', '1234', 'brayan@gmail.com', 2, 'brayan', 'activo');
-INSERT INTO "public"."psg_usuario" VALUES (3, 'adalid', 'perez', '12', 'adalid@gmail.com', 2, 'adalid', 'inactivo');
+INSERT INTO "public"."psg_usuario" VALUES (1, 'walter', 'paco', '12345678', 'walter@gmail.com', 1, 'walter', 'activo', NULL);
+INSERT INTO "public"."psg_usuario" VALUES (2, 'brayan', 'mamani', '1234', 'brayan@gmail.com', 2, 'brayan', 'activo', NULL);
+INSERT INTO "public"."psg_usuario" VALUES (3, 'adalid', 'perez', '12', 'adalid@gmail.com', 2, 'adalid', 'inactivo', NULL);
 
 -- ----------------------------
 -- Primary Key structure for table psg_cargo_usuario
@@ -279,11 +258,6 @@ ALTER TABLE "public"."psg_cargo_usuario" ADD CONSTRAINT "psg_cargo_usuario_pkey"
 -- Primary Key structure for table psg_entrada
 -- ----------------------------
 ALTER TABLE "public"."psg_entrada" ADD CONSTRAINT "psg_entrada_pkey" PRIMARY KEY ("id_entrada");
-
--- ----------------------------
--- Primary Key structure for table psg_inventario
--- ----------------------------
-ALTER TABLE "public"."psg_inventario" ADD CONSTRAINT "psg_inventario_pkey" PRIMARY KEY ("id_inventario");
 
 -- ----------------------------
 -- Primary Key structure for table psg_marca_material
@@ -336,11 +310,6 @@ ALTER TABLE "public"."psg_salida" ADD CONSTRAINT "psg_salida_pkey" PRIMARY KEY (
 ALTER TABLE "public"."psg_tipo_material" ADD CONSTRAINT "psg_tipo_material_pkey" PRIMARY KEY ("id_tipo_material");
 
 -- ----------------------------
--- Primary Key structure for table psg_tipo_movimiento
--- ----------------------------
-ALTER TABLE "public"."psg_tipo_movimiento" ADD CONSTRAINT "psg_tipo_movimiento_pkey" PRIMARY KEY ("id_tipo_mov");
-
--- ----------------------------
 -- Primary Key structure for table psg_usuario
 -- ----------------------------
 ALTER TABLE "public"."psg_usuario" ADD CONSTRAINT "psg_usuario_pkey" PRIMARY KEY ("id_usuario");
@@ -349,13 +318,6 @@ ALTER TABLE "public"."psg_usuario" ADD CONSTRAINT "psg_usuario_pkey" PRIMARY KEY
 -- Foreign Keys structure for table psg_entrada
 -- ----------------------------
 ALTER TABLE "public"."psg_entrada" ADD CONSTRAINT "material" FOREIGN KEY ("id_material") REFERENCES "public"."psg_material" ("id_material") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."psg_entrada" ADD CONSTRAINT "oficina" FOREIGN KEY ("id_oficina") REFERENCES "public"."psg_oficina" ("id_oficina") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."psg_entrada" ADD CONSTRAINT "tipo_movimiento" FOREIGN KEY ("id_tipo_mov") REFERENCES "public"."psg_tipo_movimiento" ("id_tipo_mov") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- ----------------------------
--- Foreign Keys structure for table psg_inventario
--- ----------------------------
-ALTER TABLE "public"."psg_inventario" ADD CONSTRAINT "movimiento_material" FOREIGN KEY ("id_movimiento_material") REFERENCES "public"."psg_movimiento_material" ("id_movimiento_material") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Keys structure for table psg_material
@@ -378,11 +340,6 @@ ALTER TABLE "public"."psg_movimiento_material" ADD CONSTRAINT "entrada" FOREIGN 
 ALTER TABLE "public"."psg_movimiento_material" ADD CONSTRAINT "salida" FOREIGN KEY ("id_salida") REFERENCES "public"."psg_salida" ("id_salida") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
--- Foreign Keys structure for table psg_oficina
--- ----------------------------
-ALTER TABLE "public"."psg_oficina" ADD CONSTRAINT "usuario" FOREIGN KEY ("id_usuario") REFERENCES "public"."psg_usuario" ("id_usuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- ----------------------------
 -- Foreign Keys structure for table psg_permiso_cargo
 -- ----------------------------
 ALTER TABLE "public"."psg_permiso_cargo" ADD CONSTRAINT "cargo" FOREIGN KEY ("id_cargo") REFERENCES "public"."psg_cargo_usuario" ("id_cargo") ON DELETE NO ACTION ON UPDATE NO ACTION;
@@ -392,10 +349,9 @@ ALTER TABLE "public"."psg_permiso_cargo" ADD CONSTRAINT "permiso" FOREIGN KEY ("
 -- Foreign Keys structure for table psg_salida
 -- ----------------------------
 ALTER TABLE "public"."psg_salida" ADD CONSTRAINT "material" FOREIGN KEY ("id_material") REFERENCES "public"."psg_material" ("id_material") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."psg_salida" ADD CONSTRAINT "oficina" FOREIGN KEY ("id_oficina") REFERENCES "public"."psg_oficina" ("id_oficina") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."psg_salida" ADD CONSTRAINT "tipo_movimiento" FOREIGN KEY ("id_tipo_mov") REFERENCES "public"."psg_tipo_movimiento" ("id_tipo_mov") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Keys structure for table psg_usuario
 -- ----------------------------
 ALTER TABLE "public"."psg_usuario" ADD CONSTRAINT "cargo" FOREIGN KEY ("id_cargo") REFERENCES "public"."psg_cargo_usuario" ("id_cargo") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."psg_usuario" ADD CONSTRAINT "usuario_oficina" FOREIGN KEY ("id_oficina") REFERENCES "public"."psg_oficina" ("id_oficina") ON DELETE NO ACTION ON UPDATE NO ACTION;
