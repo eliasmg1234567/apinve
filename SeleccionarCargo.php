@@ -8,7 +8,7 @@
     require("conexionp.php"); //Importa el archivo de la conexion a la BD
     
 // revisar
-    $registros=pg_query($conexion, "select * from psg_permiso as p join psg_permiso_cargo as pc on p.id_permiso=pc.id_permiso where id_cargo=$_GET[id_cargo] ");
+    $registros=pg_query($conexion, "select * from psg_cargo_usuario where id_cargo=$_GET[id_cargo] ");
     
     
     // recorre el resultado y lo guarda en un array
