@@ -9,8 +9,10 @@
 
     require("conexionp.php"); //Importa el archivo de la conexion a la BD
     
+    $id_permiso=$_GET['id_permiso'];
+    $id_cargo=$_GET['id_cargo'];
 // revisar
-    pg_query($conexion, "DELETE FROM psg_permiso where id_permiso=".$GET['id_permiso']);
+    pg_query($conexion, "delete from psg_permiso_cargo where id_permiso='$id_permiso' and id_cargo='$id_cargo'");
     
     class Result {}
 

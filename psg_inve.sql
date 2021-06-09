@@ -12,7 +12,7 @@
  Target Server Version : 110011
  File Encoding         : 65001
 
- Date: 06/06/2021 22:59:23
+ Date: 09/06/2021 02:21:52
 */
 
 
@@ -151,8 +151,14 @@ CREATE TABLE "public"."psg_cargo_usuario" (
 -- ----------------------------
 -- Records of psg_cargo_usuario
 -- ----------------------------
-INSERT INTO "public"."psg_cargo_usuario" VALUES (1, 'Administrador', 'activo');
 INSERT INTO "public"."psg_cargo_usuario" VALUES (2, 'Asesor', 'activo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (1, 'Administrador', 'activo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (3, 'personal', 'inactivo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (4, 'personal2', 'inactivo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (7, 'personal2', 'inactivo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (9, 'reportero', 'inactivo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (10, 'personal6', 'activo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (12, 'administrador2', 'activo');
 
 -- ----------------------------
 -- Table structure for psg_entrada
@@ -269,12 +275,12 @@ CREATE TABLE "public"."psg_permiso" (
 -- ----------------------------
 INSERT INTO "public"."psg_permiso" VALUES (3, 'Accede a la configuracion de proveedores', 'puede asignar, eliminar proveedores');
 INSERT INTO "public"."psg_permiso" VALUES (8, 'solicita solo reporte de almacen', 'solo tiene acceso a generar el reporte ultimo de almacenamientos');
-INSERT INTO "public"."psg_permiso" VALUES (2, 'Accede a la confguracion de cargos', 'puede asignar, eliminar nuevos cargoss');
 INSERT INTO "public"."psg_permiso" VALUES (1, 'Accedera la cofiguracion de usuarios', 'puede asignar, eliminar usuarios');
-INSERT INTO "public"."psg_permiso" VALUES (6, 'Registra reporte de entrada', 'puede registrar los materiales que ingresan');
 INSERT INTO "public"."psg_permiso" VALUES (5, 'Consulta reporte de movimientos', 'Puede generar reporte de movimientos');
 INSERT INTO "public"."psg_permiso" VALUES (4, 'Consuulta reporte de almacen', 'Pueede generar un reporte en el almacen de los materiales existentess');
 INSERT INTO "public"."psg_permiso" VALUES (7, 'Registra reporte de salidas', 'puede registrar los materiales que salen de almacenes');
+INSERT INTO "public"."psg_permiso" VALUES (6, 'Registra reporte de entrada', 'puede registrar los materiales que ingresann');
+INSERT INTO "public"."psg_permiso" VALUES (2, 'Aaccede a la confguracion de cargos', 'puede asignar, eliminar nuevos cargoss');
 
 -- ----------------------------
 -- Table structure for psg_permiso_cargo
@@ -296,7 +302,13 @@ INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 4);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 5);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 6);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 7);
-INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 8);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (3, 4);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (3, 5);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (4, 4);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (4, 5);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (4, 7);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (12, 2);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (12, 3);
 
 -- ----------------------------
 -- Table structure for psg_proveedor
@@ -374,7 +386,7 @@ INSERT INTO "public"."psg_usuario" VALUES (2, 'brayan', 'mamani', '1234', 'braya
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_cargo_usuario_id_cargo_seq"
 OWNED BY "public"."psg_cargo_usuario"."id_cargo";
-SELECT setval('"public"."psg_cargo_usuario_id_cargo_seq"', 3, true);
+SELECT setval('"public"."psg_cargo_usuario_id_cargo_seq"', 13, true);
 
 -- ----------------------------
 -- Alter sequences owned by
@@ -485,11 +497,6 @@ ALTER TABLE "public"."psg_oficina" ADD CONSTRAINT "psg_oficina_pkey" PRIMARY KEY
 -- Primary Key structure for table psg_permiso
 -- ----------------------------
 ALTER TABLE "public"."psg_permiso" ADD CONSTRAINT "psg_permiso_pkey" PRIMARY KEY ("id_permiso");
-
--- ----------------------------
--- Primary Key structure for table psg_permiso_cargo
--- ----------------------------
-ALTER TABLE "public"."psg_permiso_cargo" ADD CONSTRAINT "psg_permiso_cargo_pkey" PRIMARY KEY ("id_cargo", "id_permiso");
 
 -- ----------------------------
 -- Primary Key structure for table psg_proveedor
