@@ -15,10 +15,10 @@ for ($i = 0; $i < count($lote1); $i++){
     }
 */
 
-
+for($i=0;$i<count($params->id_cargo);$i++){
     pg_query($conexion, "INSERT INTO psg_permiso_cargo 
-    values (id_cargo=$params->id_cargo,id_permiso=$params->id_permiso)");
-    
+    values (id_cargo=$params->id_cargo[$i],id_permiso=$params->id_permiso[$i])");
+}
     class Result {}
 
     $response = new Result();
