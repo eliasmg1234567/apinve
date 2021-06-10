@@ -12,7 +12,7 @@
  Target Server Version : 110011
  File Encoding         : 65001
 
- Date: 09/06/2021 02:21:52
+ Date: 10/06/2021 13:00:26
 */
 
 
@@ -151,14 +151,11 @@ CREATE TABLE "public"."psg_cargo_usuario" (
 -- ----------------------------
 -- Records of psg_cargo_usuario
 -- ----------------------------
-INSERT INTO "public"."psg_cargo_usuario" VALUES (2, 'Asesor', 'activo');
-INSERT INTO "public"."psg_cargo_usuario" VALUES (1, 'Administrador', 'activo');
-INSERT INTO "public"."psg_cargo_usuario" VALUES (3, 'personal', 'inactivo');
-INSERT INTO "public"."psg_cargo_usuario" VALUES (4, 'personal2', 'inactivo');
-INSERT INTO "public"."psg_cargo_usuario" VALUES (7, 'personal2', 'inactivo');
-INSERT INTO "public"."psg_cargo_usuario" VALUES (9, 'reportero', 'inactivo');
-INSERT INTO "public"."psg_cargo_usuario" VALUES (10, 'personal6', 'activo');
-INSERT INTO "public"."psg_cargo_usuario" VALUES (12, 'administrador2', 'activo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (1, 'Administrador', 'inactivo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (2, 'Asesor', 'inactivo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (3, 'personal', 'activo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (4, 'provedor', 'activo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (5, 'personal2', 'activo');
 
 -- ----------------------------
 -- Table structure for psg_entrada
@@ -192,6 +189,7 @@ CREATE TABLE "public"."psg_marca_material" (
 -- ----------------------------
 -- Records of psg_marca_material
 -- ----------------------------
+INSERT INTO "public"."psg_marca_material" VALUES (1, 'Lenovo', 'lenovo i3', 'lenovo@support.com');
 
 -- ----------------------------
 -- Table structure for psg_material
@@ -202,15 +200,21 @@ CREATE TABLE "public"."psg_material" (
   "id_tipo" int2,
   "fecha_compra" date,
   "estado" varchar(45) COLLATE "pg_catalog"."default",
-  "id_marca" int2,
   "id_usuario" int2,
-  "id_oficina" int2
+  "id_oficina" int2,
+  "nombre_material" varchar(255) COLLATE "pg_catalog"."default",
+  "descripcion_material" varchar(255) COLLATE "pg_catalog"."default",
+  "caracteristicas" varchar(255) COLLATE "pg_catalog"."default"
 )
 ;
 
 -- ----------------------------
 -- Records of psg_material
 -- ----------------------------
+INSERT INTO "public"."psg_material" VALUES (2, 2, '2021-05-03', 'nuevo', 2, 1, 'laptop', NULL, NULL);
+INSERT INTO "public"."psg_material" VALUES (3, 4, '2021-06-10', 'nuevo', 1, 1, 'Silla', 'Silla Otwer', 'Asiento de sala de estudio');
+INSERT INTO "public"."psg_material" VALUES (5, 5, '2021-05-22', 'nuevo', 2, 1, 'cable UTP', 'cable de red', 'Cable tipo 5, 6 metros');
+INSERT INTO "public"."psg_material" VALUES (6, 1, '2021-06-09', 'medio', 2, 2, 'mesa', 'SIMBR Escritorio Gaming 120cm', 'Mesa Gaming con Diseño de Forma en K, Mesa de Juegos para Ordenador Portátil, Escritorio de Oficina con Soporte de Controlador, Posavasos y Gancho para Auriculares');
 
 -- ----------------------------
 -- Table structure for psg_material_proveedor
@@ -258,6 +262,7 @@ CREATE TABLE "public"."psg_oficina" (
 -- Records of psg_oficina
 -- ----------------------------
 INSERT INTO "public"."psg_oficina" VALUES (1, 'central');
+INSERT INTO "public"."psg_oficina" VALUES (2, 'of 2');
 
 -- ----------------------------
 -- Table structure for psg_permiso
@@ -273,14 +278,14 @@ CREATE TABLE "public"."psg_permiso" (
 -- ----------------------------
 -- Records of psg_permiso
 -- ----------------------------
+INSERT INTO "public"."psg_permiso" VALUES (1, 'Accedera la cofiguracion de usuario', 'puede asignar, eliminar usuarios');
 INSERT INTO "public"."psg_permiso" VALUES (3, 'Accede a la configuracion de proveedores', 'puede asignar, eliminar proveedores');
+INSERT INTO "public"."psg_permiso" VALUES (5, 'consulta reporte de movimientos', 'puede generar reporte de movimientos');
+INSERT INTO "public"."psg_permiso" VALUES (6, 'registra reporte de entrada', 'puede registrar los materiales que ingresan');
+INSERT INTO "public"."psg_permiso" VALUES (7, 'registra reporte de salida', 'puede registrar los materiales que salen de almacen');
 INSERT INTO "public"."psg_permiso" VALUES (8, 'solicita solo reporte de almacen', 'solo tiene acceso a generar el reporte ultimo de almacenamientos');
-INSERT INTO "public"."psg_permiso" VALUES (1, 'Accedera la cofiguracion de usuarios', 'puede asignar, eliminar usuarios');
-INSERT INTO "public"."psg_permiso" VALUES (5, 'Consulta reporte de movimientos', 'Puede generar reporte de movimientos');
-INSERT INTO "public"."psg_permiso" VALUES (4, 'Consuulta reporte de almacen', 'Pueede generar un reporte en el almacen de los materiales existentess');
-INSERT INTO "public"."psg_permiso" VALUES (7, 'Registra reporte de salidas', 'puede registrar los materiales que salen de almacenes');
-INSERT INTO "public"."psg_permiso" VALUES (6, 'Registra reporte de entrada', 'puede registrar los materiales que ingresann');
-INSERT INTO "public"."psg_permiso" VALUES (2, 'Aaccede a la confguracion de cargos', 'puede asignar, eliminar nuevos cargoss');
+INSERT INTO "public"."psg_permiso" VALUES (2, 'Accede a la confguracion de cargos', 'puede asignar, eliminar nuevos cargoss');
+INSERT INTO "public"."psg_permiso" VALUES (4, 'consulta reporte de almacen', 'puede generar un reporte en el almacen de los materiales existentess');
 
 -- ----------------------------
 -- Table structure for psg_permiso_cargo
@@ -302,13 +307,13 @@ INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 4);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 5);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 6);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 7);
-INSERT INTO "public"."psg_permiso_cargo" VALUES (3, 4);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 8);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (2, 1);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (2, 4);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (3, 3);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (3, 5);
-INSERT INTO "public"."psg_permiso_cargo" VALUES (4, 4);
-INSERT INTO "public"."psg_permiso_cargo" VALUES (4, 5);
-INSERT INTO "public"."psg_permiso_cargo" VALUES (4, 7);
-INSERT INTO "public"."psg_permiso_cargo" VALUES (12, 2);
-INSERT INTO "public"."psg_permiso_cargo" VALUES (12, 3);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (3, 6);
+INSERT INTO "public"."psg_permiso_cargo" VALUES (4, 2);
 
 -- ----------------------------
 -- Table structure for psg_proveedor
@@ -357,6 +362,11 @@ CREATE TABLE "public"."psg_tipo_material" (
 -- ----------------------------
 -- Records of psg_tipo_material
 -- ----------------------------
+INSERT INTO "public"."psg_tipo_material" VALUES (1, 'Ofimatica');
+INSERT INTO "public"."psg_tipo_material" VALUES (2, 'Estanteria');
+INSERT INTO "public"."psg_tipo_material" VALUES (3, 'Papeleria');
+INSERT INTO "public"."psg_tipo_material" VALUES (4, 'Mobiliario');
+INSERT INTO "public"."psg_tipo_material" VALUES (5, 'Red Informatica');
 
 -- ----------------------------
 -- Table structure for psg_usuario
@@ -380,83 +390,85 @@ CREATE TABLE "public"."psg_usuario" (
 -- ----------------------------
 INSERT INTO "public"."psg_usuario" VALUES (1, 'walter', 'paco', '12345678', 'walter@gmail.com', 1, 'walter', 'activo', 1);
 INSERT INTO "public"."psg_usuario" VALUES (2, 'brayan', 'mamani', '1234', 'brayan@gmail.com', 2, 'brayan', 'activo', 1);
+INSERT INTO "public"."psg_usuario" VALUES (3, 'adalid', 'm', '11111', 'adalid@gmail.com', 3, 'adalid', 'activo', 2);
+INSERT INTO "public"."psg_usuario" VALUES (4, 'richard', 'ticona', '22222', 'richar@gmail.com', 2, 'sirchard', 'Activo', 1);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_cargo_usuario_id_cargo_seq"
 OWNED BY "public"."psg_cargo_usuario"."id_cargo";
-SELECT setval('"public"."psg_cargo_usuario_id_cargo_seq"', 13, true);
+SELECT setval('"public"."psg_cargo_usuario_id_cargo_seq"', 11, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_entrada_id_entrada_seq"
 OWNED BY "public"."psg_entrada"."id_entrada";
-SELECT setval('"public"."psg_entrada_id_entrada_seq"', 3, false);
+SELECT setval('"public"."psg_entrada_id_entrada_seq"', 2, false);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_marca_material_id_marca_seq"
 OWNED BY "public"."psg_marca_material"."id_marca";
-SELECT setval('"public"."psg_marca_material_id_marca_seq"', 3, false);
+SELECT setval('"public"."psg_marca_material_id_marca_seq"', 2, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_material_id_material_seq"
 OWNED BY "public"."psg_material"."id_material";
-SELECT setval('"public"."psg_material_id_material_seq"', 3, false);
+SELECT setval('"public"."psg_material_id_material_seq"', 7, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_movimiento_material_id_movimiento_material_seq"
 OWNED BY "public"."psg_movimiento_material"."id_movimiento_material";
-SELECT setval('"public"."psg_movimiento_material_id_movimiento_material_seq"', 3, false);
+SELECT setval('"public"."psg_movimiento_material_id_movimiento_material_seq"', 2, false);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_oficina_id_oficina_seq"
 OWNED BY "public"."psg_oficina"."id_oficina";
-SELECT setval('"public"."psg_oficina_id_oficina_seq"', 3, true);
+SELECT setval('"public"."psg_oficina_id_oficina_seq"', 2, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_permiso_id_permiso_seq"
 OWNED BY "public"."psg_permiso"."id_permiso";
-SELECT setval('"public"."psg_permiso_id_permiso_seq"', 10, true);
+SELECT setval('"public"."psg_permiso_id_permiso_seq"', 9, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_proveedor_id_proveedor_seq"
 OWNED BY "public"."psg_proveedor"."id_proveedor";
-SELECT setval('"public"."psg_proveedor_id_proveedor_seq"', 3, false);
+SELECT setval('"public"."psg_proveedor_id_proveedor_seq"', 2, false);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_salida_id_salida_seq"
 OWNED BY "public"."psg_salida"."id_salida";
-SELECT setval('"public"."psg_salida_id_salida_seq"', 3, false);
+SELECT setval('"public"."psg_salida_id_salida_seq"', 2, false);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_tipo_material_id_tipo_material_seq"
 OWNED BY "public"."psg_tipo_material"."id_tipo_material";
-SELECT setval('"public"."psg_tipo_material_id_tipo_material_seq"', 3, false);
+SELECT setval('"public"."psg_tipo_material_id_tipo_material_seq"', 6, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_usuario_id_usuario_seq"
 OWNED BY "public"."psg_usuario"."id_usuario";
-SELECT setval('"public"."psg_usuario_id_usuario_seq"', 4, true);
+SELECT setval('"public"."psg_usuario_id_usuario_seq"', 5, true);
 
 -- ----------------------------
 -- Primary Key structure for table psg_cargo_usuario
@@ -499,6 +511,11 @@ ALTER TABLE "public"."psg_oficina" ADD CONSTRAINT "psg_oficina_pkey" PRIMARY KEY
 ALTER TABLE "public"."psg_permiso" ADD CONSTRAINT "psg_permiso_pkey" PRIMARY KEY ("id_permiso");
 
 -- ----------------------------
+-- Primary Key structure for table psg_permiso_cargo
+-- ----------------------------
+ALTER TABLE "public"."psg_permiso_cargo" ADD CONSTRAINT "psg_permiso_cargo_pkey" PRIMARY KEY ("id_cargo", "id_permiso");
+
+-- ----------------------------
 -- Primary Key structure for table psg_proveedor
 -- ----------------------------
 ALTER TABLE "public"."psg_proveedor" ADD CONSTRAINT "psg_proveedor_pkey" PRIMARY KEY ("id_proveedor");
@@ -526,7 +543,6 @@ ALTER TABLE "public"."psg_entrada" ADD CONSTRAINT "material" FOREIGN KEY ("id_ma
 -- ----------------------------
 -- Foreign Keys structure for table psg_material
 -- ----------------------------
-ALTER TABLE "public"."psg_material" ADD CONSTRAINT "marca" FOREIGN KEY ("id_marca") REFERENCES "public"."psg_marca_material" ("id_marca") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."psg_material" ADD CONSTRAINT "oficina" FOREIGN KEY ("id_oficina") REFERENCES "public"."psg_oficina" ("id_oficina") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."psg_material" ADD CONSTRAINT "tipo" FOREIGN KEY ("id_tipo") REFERENCES "public"."psg_tipo_material" ("id_tipo_material") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."psg_material" ADD CONSTRAINT "usuario" FOREIGN KEY ("id_usuario") REFERENCES "public"."psg_usuario" ("id_usuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
