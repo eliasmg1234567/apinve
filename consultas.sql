@@ -14,7 +14,11 @@ select * from psg_material as m join psg_tipo_material as tm on m.id_tipo=tm.id_
 insert into psg_usuario(nombre_usuario,apellido_usuario,telefono_usuario,email_usuario,id_cargo,password,estado_usuario,id_oficina) values('adalid','m','11111','adalid@gmail.com',3,'adalid','activo',2)
 
 --mostrar usuario con oficina y cargo
-select * from psg_usuario as u join psg_oficina as o on u.id_oficina=o.id_oficina join psg_cargo_usuario as cu on u.id_cargo=cu.id_cargo order by id_usuario asc
+select * from psg_usuario as u join psg_oficina as o on u.id_oficina=o.id_oficina join psg_cargo_usuario as cu o    n u.id_cargo=cu.id_cargo order by id_usuario asc
 
 --eliminar material
 delete from psg_material where id_material=1
+
+--obtener oficina especifica con usuarios
+select * from psg_oficina as o join psg_usuario as u on u.id_oficina=o.id_oficina where o.id_oficina=1
+
