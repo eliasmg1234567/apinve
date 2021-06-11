@@ -22,3 +22,8 @@ delete from psg_material where id_material=1
 --obtener oficina especifica con usuarios
 select * from psg_oficina as o join psg_usuario as u on u.id_oficina=o.id_oficina where o.id_oficina=1
 
+--obtener oficina especifica con usuarios y cargos
+select * from psg_oficina as o join psg_usuario as u on u.id_oficina=o.id_oficina join psg_cargo_usuario as cu on u.id_cargo=cu.id_cargo where o.id_oficina=1
+
+//Editar oficina
+update psg_oficina set nombre_oficina='central' where id_oficina=1

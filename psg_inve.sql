@@ -12,7 +12,7 @@
  Target Server Version : 110011
  File Encoding         : 65001
 
- Date: 10/06/2021 13:00:26
+ Date: 11/06/2021 12:24:46
 */
 
 
@@ -261,8 +261,9 @@ CREATE TABLE "public"."psg_oficina" (
 -- ----------------------------
 -- Records of psg_oficina
 -- ----------------------------
+INSERT INTO "public"."psg_oficina" VALUES (2, 'of_2');
 INSERT INTO "public"."psg_oficina" VALUES (1, 'central');
-INSERT INTO "public"."psg_oficina" VALUES (2, 'of 2');
+INSERT INTO "public"."psg_oficina" VALUES (3, '');
 
 -- ----------------------------
 -- Table structure for psg_permiso
@@ -433,7 +434,7 @@ SELECT setval('"public"."psg_movimiento_material_id_movimiento_material_seq"', 2
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_oficina_id_oficina_seq"
 OWNED BY "public"."psg_oficina"."id_oficina";
-SELECT setval('"public"."psg_oficina_id_oficina_seq"', 2, true);
+SELECT setval('"public"."psg_oficina_id_oficina_seq"', 4, true);
 
 -- ----------------------------
 -- Alter sequences owned by
