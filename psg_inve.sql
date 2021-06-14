@@ -12,7 +12,7 @@
  Target Server Version : 110011
  File Encoding         : 65001
 
- Date: 13/06/2021 23:46:44
+ Date: 14/06/2021 12:39:14
 */
 
 
@@ -152,10 +152,13 @@ CREATE TABLE "public"."psg_almacen" (
 -- ----------------------------
 -- Records of psg_almacen
 -- ----------------------------
-INSERT INTO "public"."psg_almacen" VALUES (3, 1, '50', NULL);
-INSERT INTO "public"."psg_almacen" VALUES (3, 3, '50', NULL);
-INSERT INTO "public"."psg_almacen" VALUES (5, 3, '30', NULL);
-INSERT INTO "public"."psg_almacen" VALUES (6, 3, '11', '2021-06-11');
+INSERT INTO "public"."psg_almacen" VALUES (5, 3, '3', '2021-06-08');
+INSERT INTO "public"."psg_almacen" VALUES (3, 3, '4', '2021-06-01');
+INSERT INTO "public"."psg_almacen" VALUES (3, 1, '2', '2021-02-01');
+INSERT INTO "public"."psg_almacen" VALUES (46, 10, '2', '2020-05-26');
+INSERT INTO "public"."psg_almacen" VALUES (6, 13, '5', '2021-06-08');
+INSERT INTO "public"."psg_almacen" VALUES (6, 1, '1', '2021-06-02');
+INSERT INTO "public"."psg_almacen" VALUES (5, 1, '1', '2021-03-25');
 
 -- ----------------------------
 -- Table structure for psg_cargo_usuario
@@ -420,89 +423,88 @@ INSERT INTO "public"."psg_usuario" VALUES (1, 'walter', 'paco', '12345678', 'wal
 INSERT INTO "public"."psg_usuario" VALUES (2, 'brayan', 'mamani', '1234', 'brayan@gmail.com', 2, 'brayan', 'activo', 1);
 INSERT INTO "public"."psg_usuario" VALUES (3, 'adalid', 'm', '11111', 'adalid@gmail.com', 3, 'adalid', 'activo', 2);
 INSERT INTO "public"."psg_usuario" VALUES (4, 'richard', 'ticona', '22222', 'richar@gmail.com', 2, 'sirchard', 'Activo', 1);
-INSERT INTO "public"."psg_usuario" VALUES (6, 'elias', 'moll', '5555', 'elias', 4, 'elias', 'Activo', 6);
 INSERT INTO "public"."psg_usuario" VALUES (7, 'sara', 'vera', '55555', 'sara@gmail.com', 3, 'sara', 'Activo', 6);
-INSERT INTO "public"."psg_usuario" VALUES (8, '-', '-', '-', '-', 2, '-', 'Inactivo', 6);
-INSERT INTO "public"."psg_usuario" VALUES (9, 'a', 'a', 'a', 'a', 3, 'a', 'Activo', 6);
 INSERT INTO "public"."psg_usuario" VALUES (10, 'juan', 'perez', '77 77  77', 'juan@gmail.com', 4, 'juan', 'Inactivo', 12);
 INSERT INTO "public"."psg_usuario" VALUES (11, 'ana', 'gutierrez', '00 00  000000', 'ana@gmail.com', 3, 'ana', 'Activo', 10);
+INSERT INTO "public"."psg_usuario" VALUES (13, 'jonas', 'bando', '999999 99999', 'jonas@gmail.com', 3, 'jonas', 'Inactivo', 11);
+INSERT INTO "public"."psg_usuario" VALUES (9, 'alicia', 'almagro', '788753', 'alicia@gmail.com', 4, 'alicia', 'Inactivo', 12);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_cargo_usuario_id_cargo_seq"
 OWNED BY "public"."psg_cargo_usuario"."id_cargo";
-SELECT setval('"public"."psg_cargo_usuario_id_cargo_seq"', 12, true);
+SELECT setval('"public"."psg_cargo_usuario_id_cargo_seq"', 13, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_entrada_id_entrada_seq"
 OWNED BY "public"."psg_entrada"."id_entrada";
-SELECT setval('"public"."psg_entrada_id_entrada_seq"', 2, false);
+SELECT setval('"public"."psg_entrada_id_entrada_seq"', 3, false);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_marca_material_id_marca_seq"
 OWNED BY "public"."psg_marca_material"."id_marca";
-SELECT setval('"public"."psg_marca_material_id_marca_seq"', 3, true);
+SELECT setval('"public"."psg_marca_material_id_marca_seq"', 4, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_material_id_material_seq"
 OWNED BY "public"."psg_material"."id_material";
-SELECT setval('"public"."psg_material_id_material_seq"', 47, true);
+SELECT setval('"public"."psg_material_id_material_seq"', 48, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_movimiento_id_movimiento_seq"
 OWNED BY "public"."psg_movimiento"."id_movimiento";
-SELECT setval('"public"."psg_movimiento_id_movimiento_seq"', 2, false);
+SELECT setval('"public"."psg_movimiento_id_movimiento_seq"', 3, false);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_oficina_id_oficina_seq"
 OWNED BY "public"."psg_oficina"."id_oficina";
-SELECT setval('"public"."psg_oficina_id_oficina_seq"', 14, true);
+SELECT setval('"public"."psg_oficina_id_oficina_seq"', 15, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_permiso_id_permiso_seq"
 OWNED BY "public"."psg_permiso"."id_permiso";
-SELECT setval('"public"."psg_permiso_id_permiso_seq"', 10, true);
+SELECT setval('"public"."psg_permiso_id_permiso_seq"', 11, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_proveedor_id_proveedor_seq"
 OWNED BY "public"."psg_proveedor"."id_proveedor";
-SELECT setval('"public"."psg_proveedor_id_proveedor_seq"', 3, false);
+SELECT setval('"public"."psg_proveedor_id_proveedor_seq"', 4, false);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_salida_id_salida_seq"
 OWNED BY "public"."psg_salida"."id_salida";
-SELECT setval('"public"."psg_salida_id_salida_seq"', 2, false);
+SELECT setval('"public"."psg_salida_id_salida_seq"', 3, false);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_tipo_material_id_tipo_material_seq"
 OWNED BY "public"."psg_tipo_material"."id_tipo_material";
-SELECT setval('"public"."psg_tipo_material_id_tipo_material_seq"', 7, true);
+SELECT setval('"public"."psg_tipo_material_id_tipo_material_seq"', 8, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_usuario_id_usuario_seq"
 OWNED BY "public"."psg_usuario"."id_usuario";
-SELECT setval('"public"."psg_usuario_id_usuario_seq"', 12, true);
+SELECT setval('"public"."psg_usuario_id_usuario_seq"', 14, true);
 
 -- ----------------------------
 -- Primary Key structure for table psg_almacen
