@@ -7,12 +7,12 @@
 
     require("conexionp.php"); //Importa el archivo de la conexion a la BD
     
-
-    $registros=pg_query($conexion, "select * from psg_oficina order by id_oficina asc");
+// revisar
+    $registros=pg_query($conexion, "select * from psg_material where id_material=$_GET[id_material] ");
     
     
     // recorre el resultado y lo guarda en un array
-    while($resultado =pg_fetch_assoc($registros)){
+    while($resultado =pg_fetch_array($registros)){
         $datos[]=$resultado;
     }
    

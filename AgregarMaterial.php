@@ -10,8 +10,8 @@
     require("conexionp.php"); //Importa el archivo de la conexion a la BD
     
 // revisar
-    pg_query($conexion, "insert into psg_material (nombre_material,id_tipo,fecha_compra,estado,descripcion_material,caracteristicas,id_oficina,id_usuario) 
-    values('$params->nombre_material',$params->id_tipo,'$params->fecha_compra','$params->estado','$params->descripcion_material','$params->caracteristicas',$params->id_oficina,$params->id_usuario)
+    pg_query($conexion, "insert into psg_material (nombre_material,id_tipo,fecha_compra,estado,descripcion_material,caracteristicas) 
+    values('$params->nombre_material',$params->id_tipo,'$params->fecha_compra','$params->estado','$params->descripcion_material','$params->caracteristicas')
     ");
     
     class Result {}

@@ -12,7 +12,7 @@
  Target Server Version : 110011
  File Encoding         : 65001
 
- Date: 11/06/2021 12:24:46
+ Date: 13/06/2021 23:46:44
 */
 
 
@@ -61,10 +61,10 @@ START 1
 CACHE 1;
 
 -- ----------------------------
--- Sequence structure for psg_movimiento_material_id_movimiento_material_seq
+-- Sequence structure for psg_movimiento_id_movimiento_seq
 -- ----------------------------
-DROP SEQUENCE IF EXISTS "public"."psg_movimiento_material_id_movimiento_material_seq";
-CREATE SEQUENCE "public"."psg_movimiento_material_id_movimiento_material_seq" 
+DROP SEQUENCE IF EXISTS "public"."psg_movimiento_id_movimiento_seq";
+CREATE SEQUENCE "public"."psg_movimiento_id_movimiento_seq" 
 INCREMENT 1
 MINVALUE  1
 MAXVALUE 32767
@@ -138,6 +138,26 @@ START 1
 CACHE 1;
 
 -- ----------------------------
+-- Table structure for psg_almacen
+-- ----------------------------
+DROP TABLE IF EXISTS "public"."psg_almacen";
+CREATE TABLE "public"."psg_almacen" (
+  "id_material" int2 NOT NULL,
+  "id_oficina" int2 NOT NULL,
+  "cantidad" varchar(255) COLLATE "pg_catalog"."default",
+  "fecha" date
+)
+;
+
+-- ----------------------------
+-- Records of psg_almacen
+-- ----------------------------
+INSERT INTO "public"."psg_almacen" VALUES (3, 1, '50', NULL);
+INSERT INTO "public"."psg_almacen" VALUES (3, 3, '50', NULL);
+INSERT INTO "public"."psg_almacen" VALUES (5, 3, '30', NULL);
+INSERT INTO "public"."psg_almacen" VALUES (6, 3, '11', '2021-06-11');
+
+-- ----------------------------
 -- Table structure for psg_cargo_usuario
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."psg_cargo_usuario";
@@ -153,9 +173,9 @@ CREATE TABLE "public"."psg_cargo_usuario" (
 -- ----------------------------
 INSERT INTO "public"."psg_cargo_usuario" VALUES (1, 'Administrador', 'inactivo');
 INSERT INTO "public"."psg_cargo_usuario" VALUES (2, 'Asesor', 'inactivo');
-INSERT INTO "public"."psg_cargo_usuario" VALUES (3, 'personal', 'activo');
 INSERT INTO "public"."psg_cargo_usuario" VALUES (4, 'provedor', 'activo');
 INSERT INTO "public"."psg_cargo_usuario" VALUES (5, 'personal2', 'activo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (3, 'Personal', 'inactivo');
 
 -- ----------------------------
 -- Table structure for psg_entrada
@@ -163,10 +183,8 @@ INSERT INTO "public"."psg_cargo_usuario" VALUES (5, 'personal2', 'activo');
 DROP TABLE IF EXISTS "public"."psg_entrada";
 CREATE TABLE "public"."psg_entrada" (
   "id_entrada" int2 NOT NULL DEFAULT nextval('psg_entrada_id_entrada_seq'::regclass),
-  "fecha_entrada" date,
-  "cantidad_entrada" varchar(255) COLLATE "pg_catalog"."default",
-  "id_material" int2,
-  "tipo_movimiento" varchar(255) COLLATE "pg_catalog"."default"
+  "nombre_entrada" varchar(255) COLLATE "pg_catalog"."default",
+  "tipo_entrada" varchar(255) COLLATE "pg_catalog"."default"
 )
 ;
 
@@ -200,8 +218,6 @@ CREATE TABLE "public"."psg_material" (
   "id_tipo" int2,
   "fecha_compra" date,
   "estado" varchar(45) COLLATE "pg_catalog"."default",
-  "id_usuario" int2,
-  "id_oficina" int2,
   "nombre_material" varchar(255) COLLATE "pg_catalog"."default",
   "descripcion_material" varchar(255) COLLATE "pg_catalog"."default",
   "caracteristicas" varchar(255) COLLATE "pg_catalog"."default"
@@ -211,10 +227,11 @@ CREATE TABLE "public"."psg_material" (
 -- ----------------------------
 -- Records of psg_material
 -- ----------------------------
-INSERT INTO "public"."psg_material" VALUES (2, 2, '2021-05-03', 'nuevo', 2, 1, 'laptop', NULL, NULL);
-INSERT INTO "public"."psg_material" VALUES (3, 4, '2021-06-10', 'nuevo', 1, 1, 'Silla', 'Silla Otwer', 'Asiento de sala de estudio');
-INSERT INTO "public"."psg_material" VALUES (5, 5, '2021-05-22', 'nuevo', 2, 1, 'cable UTP', 'cable de red', 'Cable tipo 5, 6 metros');
-INSERT INTO "public"."psg_material" VALUES (6, 1, '2021-06-09', 'medio', 2, 2, 'mesa', 'SIMBR Escritorio Gaming 120cm', 'Mesa Gaming con Diseño de Forma en K, Mesa de Juegos para Ordenador Portátil, Escritorio de Oficina con Soporte de Controlador, Posavasos y Gancho para Auriculares');
+INSERT INTO "public"."psg_material" VALUES (5, 2, '2021-03-10', 'viejo', 'Mesa', 'SIMBR Escritorio Gaming 200cm', 'MESA Gaming con Diseño de Forma en K, Mesa de Juegos para Ordenador Portátil, Escritorio de Oficina con Soporte de Controlador, Posavasos y Gancho para Auriculares');
+INSERT INTO "public"."psg_material" VALUES (8, 2, '2021-03-10', 'viejo', 'Mesa', 'SIMBR Escritorio Gaming 200cm', 'MESA Gaming con Diseño de Forma en K, Mesa de Juegos para Ordenador Portátil, Escritorio de Oficina con Soporte de Controlador, Posavasos y Gancho para Auriculares');
+INSERT INTO "public"."psg_material" VALUES (6, 5, '2021-10-02', 'nuevo', 'cable HDMI', '4k 2metro-Snowkids', 'Cable HDMI 2.0 de Alta Velocidad Trenzado de Nailon 4K@60Hz a 18Gbps Cable HDMI Compatible 3D, Función Ethernet, Video 4K UHD 2160p, HD 1080p- Gris');
+INSERT INTO "public"."psg_material" VALUES (3, 1, '2021-11-10', 'medio', 'Laptop Lenovo', 'Lenovo ThinkPad E14 14" FHD', 'Business Ordenador portátil, Intel Quad-Core i5 10210U hasta 4.2GHz (Beats i7-7500U), 8GB DDR4 RAM, 128GB SSD + 1TB HDD, AC WiFi, BT 5.0, Windows 10 Pro, 64GB unidad flash USB');
+INSERT INTO "public"."psg_material" VALUES (46, 1, '2021-06-15', 'nuevo', 'Impresora Epson', 'Epson EcoTank ET-2720', 'Impresora multifuncional inalámbrica a color con escáner y copiadora.');
 
 -- ----------------------------
 -- Table structure for psg_material_proveedor
@@ -233,19 +250,23 @@ CREATE TABLE "public"."psg_material_proveedor" (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for psg_movimiento_material
+-- Table structure for psg_movimiento
 -- ----------------------------
-DROP TABLE IF EXISTS "public"."psg_movimiento_material";
-CREATE TABLE "public"."psg_movimiento_material" (
-  "id_movimiento_material" int2 NOT NULL DEFAULT nextval('psg_movimiento_material_id_movimiento_material_seq'::regclass),
+DROP TABLE IF EXISTS "public"."psg_movimiento";
+CREATE TABLE "public"."psg_movimiento" (
+  "id_movimiento" int2 NOT NULL DEFAULT nextval('psg_movimiento_id_movimiento_seq'::regclass),
+  "id_material" int2,
   "id_entrada" int2,
   "id_salida" int2,
+  "cantidad" varchar(255) COLLATE "pg_catalog"."default",
+  "motivo_movimiento" varchar(255) COLLATE "pg_catalog"."default",
+  "tipo_movimiento" varchar(255) COLLATE "pg_catalog"."default",
   "fecha_movimiento" date
 )
 ;
 
 -- ----------------------------
--- Records of psg_movimiento_material
+-- Records of psg_movimiento
 -- ----------------------------
 
 -- ----------------------------
@@ -254,16 +275,25 @@ CREATE TABLE "public"."psg_movimiento_material" (
 DROP TABLE IF EXISTS "public"."psg_oficina";
 CREATE TABLE "public"."psg_oficina" (
   "id_oficina" int2 NOT NULL DEFAULT nextval('psg_oficina_id_oficina_seq'::regclass),
-  "nombre_oficina" varchar(255) COLLATE "pg_catalog"."default"
+  "nombre_oficina" varchar(255) COLLATE "pg_catalog"."default",
+  "telefono_oficina" varchar(255) COLLATE "pg_catalog"."default"
 )
 ;
 
 -- ----------------------------
 -- Records of psg_oficina
 -- ----------------------------
-INSERT INTO "public"."psg_oficina" VALUES (2, 'of_2');
-INSERT INTO "public"."psg_oficina" VALUES (1, 'central');
-INSERT INTO "public"."psg_oficina" VALUES (3, '');
+INSERT INTO "public"."psg_oficina" VALUES (6, 'of_3', NULL);
+INSERT INTO "public"."psg_oficina" VALUES (7, 'of_4', NULL);
+INSERT INTO "public"."psg_oficina" VALUES (8, 'of_5', NULL);
+INSERT INTO "public"."psg_oficina" VALUES (9, 'of_6', NULL);
+INSERT INTO "public"."psg_oficina" VALUES (10, 'of_7', '12345');
+INSERT INTO "public"."psg_oficina" VALUES (1, 'Central', '777777');
+INSERT INTO "public"."psg_oficina" VALUES (2, 'of_1_', NULL);
+INSERT INTO "public"."psg_oficina" VALUES (3, 'of_2_', '121212');
+INSERT INTO "public"."psg_oficina" VALUES (12, 'of_9', '99999');
+INSERT INTO "public"."psg_oficina" VALUES (11, 'of_8', '8888889');
+INSERT INTO "public"."psg_oficina" VALUES (13, 'of_10', '101010');
 
 -- ----------------------------
 -- Table structure for psg_permiso
@@ -311,7 +341,6 @@ INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 7);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (1, 8);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (2, 1);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (2, 4);
-INSERT INTO "public"."psg_permiso_cargo" VALUES (3, 3);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (3, 5);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (3, 6);
 INSERT INTO "public"."psg_permiso_cargo" VALUES (4, 2);
@@ -339,10 +368,8 @@ CREATE TABLE "public"."psg_proveedor" (
 DROP TABLE IF EXISTS "public"."psg_salida";
 CREATE TABLE "public"."psg_salida" (
   "id_salida" int2 NOT NULL DEFAULT nextval('psg_salida_id_salida_seq'::regclass),
-  "fecha_salida" date,
-  "cantidad_salida" varchar(255) COLLATE "pg_catalog"."default",
-  "id_material" int2,
-  "tipo_movimiento" varchar(255) COLLATE "pg_catalog"."default"
+  "nombre_salida" varchar(255) COLLATE "pg_catalog"."default",
+  "tipo_salida" varchar(255) COLLATE "pg_catalog"."default"
 )
 ;
 
@@ -393,13 +420,19 @@ INSERT INTO "public"."psg_usuario" VALUES (1, 'walter', 'paco', '12345678', 'wal
 INSERT INTO "public"."psg_usuario" VALUES (2, 'brayan', 'mamani', '1234', 'brayan@gmail.com', 2, 'brayan', 'activo', 1);
 INSERT INTO "public"."psg_usuario" VALUES (3, 'adalid', 'm', '11111', 'adalid@gmail.com', 3, 'adalid', 'activo', 2);
 INSERT INTO "public"."psg_usuario" VALUES (4, 'richard', 'ticona', '22222', 'richar@gmail.com', 2, 'sirchard', 'Activo', 1);
+INSERT INTO "public"."psg_usuario" VALUES (6, 'elias', 'moll', '5555', 'elias', 4, 'elias', 'Activo', 6);
+INSERT INTO "public"."psg_usuario" VALUES (7, 'sara', 'vera', '55555', 'sara@gmail.com', 3, 'sara', 'Activo', 6);
+INSERT INTO "public"."psg_usuario" VALUES (8, '-', '-', '-', '-', 2, '-', 'Inactivo', 6);
+INSERT INTO "public"."psg_usuario" VALUES (9, 'a', 'a', 'a', 'a', 3, 'a', 'Activo', 6);
+INSERT INTO "public"."psg_usuario" VALUES (10, 'juan', 'perez', '77 77  77', 'juan@gmail.com', 4, 'juan', 'Inactivo', 12);
+INSERT INTO "public"."psg_usuario" VALUES (11, 'ana', 'gutierrez', '00 00  000000', 'ana@gmail.com', 3, 'ana', 'Activo', 10);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_cargo_usuario_id_cargo_seq"
 OWNED BY "public"."psg_cargo_usuario"."id_cargo";
-SELECT setval('"public"."psg_cargo_usuario_id_cargo_seq"', 11, true);
+SELECT setval('"public"."psg_cargo_usuario_id_cargo_seq"', 12, true);
 
 -- ----------------------------
 -- Alter sequences owned by
@@ -413,42 +446,42 @@ SELECT setval('"public"."psg_entrada_id_entrada_seq"', 2, false);
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_marca_material_id_marca_seq"
 OWNED BY "public"."psg_marca_material"."id_marca";
-SELECT setval('"public"."psg_marca_material_id_marca_seq"', 2, true);
+SELECT setval('"public"."psg_marca_material_id_marca_seq"', 3, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_material_id_material_seq"
 OWNED BY "public"."psg_material"."id_material";
-SELECT setval('"public"."psg_material_id_material_seq"', 7, true);
+SELECT setval('"public"."psg_material_id_material_seq"', 47, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
-ALTER SEQUENCE "public"."psg_movimiento_material_id_movimiento_material_seq"
-OWNED BY "public"."psg_movimiento_material"."id_movimiento_material";
-SELECT setval('"public"."psg_movimiento_material_id_movimiento_material_seq"', 2, false);
+ALTER SEQUENCE "public"."psg_movimiento_id_movimiento_seq"
+OWNED BY "public"."psg_movimiento"."id_movimiento";
+SELECT setval('"public"."psg_movimiento_id_movimiento_seq"', 2, false);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_oficina_id_oficina_seq"
 OWNED BY "public"."psg_oficina"."id_oficina";
-SELECT setval('"public"."psg_oficina_id_oficina_seq"', 4, true);
+SELECT setval('"public"."psg_oficina_id_oficina_seq"', 14, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_permiso_id_permiso_seq"
 OWNED BY "public"."psg_permiso"."id_permiso";
-SELECT setval('"public"."psg_permiso_id_permiso_seq"', 9, true);
+SELECT setval('"public"."psg_permiso_id_permiso_seq"', 10, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_proveedor_id_proveedor_seq"
 OWNED BY "public"."psg_proveedor"."id_proveedor";
-SELECT setval('"public"."psg_proveedor_id_proveedor_seq"', 2, false);
+SELECT setval('"public"."psg_proveedor_id_proveedor_seq"', 3, false);
 
 -- ----------------------------
 -- Alter sequences owned by
@@ -462,14 +495,19 @@ SELECT setval('"public"."psg_salida_id_salida_seq"', 2, false);
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_tipo_material_id_tipo_material_seq"
 OWNED BY "public"."psg_tipo_material"."id_tipo_material";
-SELECT setval('"public"."psg_tipo_material_id_tipo_material_seq"', 6, true);
+SELECT setval('"public"."psg_tipo_material_id_tipo_material_seq"', 7, true);
 
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_usuario_id_usuario_seq"
 OWNED BY "public"."psg_usuario"."id_usuario";
-SELECT setval('"public"."psg_usuario_id_usuario_seq"', 5, true);
+SELECT setval('"public"."psg_usuario_id_usuario_seq"', 12, true);
+
+-- ----------------------------
+-- Primary Key structure for table psg_almacen
+-- ----------------------------
+ALTER TABLE "public"."psg_almacen" ADD CONSTRAINT "psg_almacen_pkey" PRIMARY KEY ("id_material", "id_oficina");
 
 -- ----------------------------
 -- Primary Key structure for table psg_cargo_usuario
@@ -497,9 +535,9 @@ ALTER TABLE "public"."psg_material" ADD CONSTRAINT "psg_material_pkey" PRIMARY K
 ALTER TABLE "public"."psg_material_proveedor" ADD CONSTRAINT "psg_material_proveedor_pkey" PRIMARY KEY ("id_material", "id_proveedor");
 
 -- ----------------------------
--- Primary Key structure for table psg_movimiento_material
+-- Primary Key structure for table psg_movimiento
 -- ----------------------------
-ALTER TABLE "public"."psg_movimiento_material" ADD CONSTRAINT "psg_movimiento_material_pkey" PRIMARY KEY ("id_movimiento_material");
+ALTER TABLE "public"."psg_movimiento" ADD CONSTRAINT "psg_movimiento_pkey" PRIMARY KEY ("id_movimiento");
 
 -- ----------------------------
 -- Primary Key structure for table psg_oficina
@@ -537,16 +575,15 @@ ALTER TABLE "public"."psg_tipo_material" ADD CONSTRAINT "psg_tipo_material_pkey"
 ALTER TABLE "public"."psg_usuario" ADD CONSTRAINT "psg_usuario_pkey" PRIMARY KEY ("id_usuario");
 
 -- ----------------------------
--- Foreign Keys structure for table psg_entrada
+-- Foreign Keys structure for table psg_almacen
 -- ----------------------------
-ALTER TABLE "public"."psg_entrada" ADD CONSTRAINT "material" FOREIGN KEY ("id_material") REFERENCES "public"."psg_material" ("id_material") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."psg_almacen" ADD CONSTRAINT "material" FOREIGN KEY ("id_material") REFERENCES "public"."psg_material" ("id_material") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."psg_almacen" ADD CONSTRAINT "oficina" FOREIGN KEY ("id_oficina") REFERENCES "public"."psg_oficina" ("id_oficina") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Keys structure for table psg_material
 -- ----------------------------
-ALTER TABLE "public"."psg_material" ADD CONSTRAINT "oficina" FOREIGN KEY ("id_oficina") REFERENCES "public"."psg_oficina" ("id_oficina") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."psg_material" ADD CONSTRAINT "tipo" FOREIGN KEY ("id_tipo") REFERENCES "public"."psg_tipo_material" ("id_tipo_material") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."psg_material" ADD CONSTRAINT "usuario" FOREIGN KEY ("id_usuario") REFERENCES "public"."psg_usuario" ("id_usuario") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Keys structure for table psg_material_proveedor
@@ -555,21 +592,17 @@ ALTER TABLE "public"."psg_material_proveedor" ADD CONSTRAINT "material" FOREIGN 
 ALTER TABLE "public"."psg_material_proveedor" ADD CONSTRAINT "proveedor" FOREIGN KEY ("id_proveedor") REFERENCES "public"."psg_proveedor" ("id_proveedor") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
--- Foreign Keys structure for table psg_movimiento_material
+-- Foreign Keys structure for table psg_movimiento
 -- ----------------------------
-ALTER TABLE "public"."psg_movimiento_material" ADD CONSTRAINT "entrada" FOREIGN KEY ("id_entrada") REFERENCES "public"."psg_entrada" ("id_entrada") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."psg_movimiento_material" ADD CONSTRAINT "salida" FOREIGN KEY ("id_salida") REFERENCES "public"."psg_salida" ("id_salida") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."psg_movimiento" ADD CONSTRAINT "entrada" FOREIGN KEY ("id_entrada") REFERENCES "public"."psg_entrada" ("id_entrada") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."psg_movimiento" ADD CONSTRAINT "material" FOREIGN KEY ("id_material") REFERENCES "public"."psg_material" ("id_material") ON DELETE NO ACTION ON UPDATE NO ACTION;
+ALTER TABLE "public"."psg_movimiento" ADD CONSTRAINT "salida" FOREIGN KEY ("id_salida") REFERENCES "public"."psg_salida" ("id_salida") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Keys structure for table psg_permiso_cargo
 -- ----------------------------
 ALTER TABLE "public"."psg_permiso_cargo" ADD CONSTRAINT "cargo" FOREIGN KEY ("id_cargo") REFERENCES "public"."psg_cargo_usuario" ("id_cargo") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."psg_permiso_cargo" ADD CONSTRAINT "permiso" FOREIGN KEY ("id_permiso") REFERENCES "public"."psg_permiso" ("id_permiso") ON DELETE NO ACTION ON UPDATE NO ACTION;
-
--- ----------------------------
--- Foreign Keys structure for table psg_salida
--- ----------------------------
-ALTER TABLE "public"."psg_salida" ADD CONSTRAINT "material" FOREIGN KEY ("id_material") REFERENCES "public"."psg_material" ("id_material") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Keys structure for table psg_usuario

@@ -10,10 +10,14 @@
     require("conexionp.php"); //Importa el archivo de la conexion a la BD
     
 // revisar
-    pg_query($conexion, "UPDATE psg_oficina 
-    set nombre_oficina='$params->nombre_oficina',
-    telefono_oficina='$params->telefono_oficina'
-    where id_oficina=$params->id_oficina");
+    pg_query($conexion, "UPDATE psg_material 
+    SET nombre_material='$params->nombre_material',
+    estado='$params->estado',
+    descripcion_material='$params->descripcion_material',
+    fecha_compra='$params->fecha_compra',
+    id_tipo=$params->id_tipo,
+    caracteristicas='$params->caracteristicas' 
+    WHERE id_material=$params->id_material");
     
     class Result {}
 

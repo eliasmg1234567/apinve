@@ -10,14 +10,20 @@ select * from psg_material as m join psg_tipo_material as tm on m.id_tipo=tm.id_
 --mostrar materiales con tipo y oficina
 select * from psg_material as m join psg_tipo_material as tm on m.id_tipo=tm.id_tipo_material join psg_oficina as o on m.id_oficina=o.id_oficina
 
+--eliminar material
+delete from psg_material where id_material=1
+
+--seleccionar material
+select * from psg_material where id_material=3
+
+--editar material
+update psg_material set nombre_material='cable HDMI',estado='nuevo',descripcion_material='4k 2metro-Snowkids',fecha_compra='2021-10-02',id_tipo=5,caracteristicas='Cable HDMI' where id_material=6
+
 --agregar usuario
 insert into psg_usuario(nombre_usuario,apellido_usuario,telefono_usuario,email_usuario,id_cargo,password,estado_usuario,id_oficina) values('adalid','m','11111','adalid@gmail.com',3,'adalid','activo',2)
 
 --mostrar usuario con oficina y cargo
 select * from psg_usuario as u join psg_oficina as o on u.id_oficina=o.id_oficina join psg_cargo_usuario as cu o    n u.id_cargo=cu.id_cargo order by id_usuario asc
-
---eliminar material
-delete from psg_material where id_material=1
 
 --obtener oficina especifica con usuarios
 select * from psg_oficina as o join psg_usuario as u on u.id_oficina=o.id_oficina where o.id_oficina=1
@@ -25,5 +31,11 @@ select * from psg_oficina as o join psg_usuario as u on u.id_oficina=o.id_oficin
 --obtener oficina especifica con usuarios y cargos
 select * from psg_oficina as o join psg_usuario as u on u.id_oficina=o.id_oficina join psg_cargo_usuario as cu on u.id_cargo=cu.id_cargo where o.id_oficina=1
 
-//Editar oficina
+--Editar oficina
 update psg_oficina set nombre_oficina='central' where id_oficina=1
+
+--Agregar Oficina
+insert into psg_oficina (nombre_oficina,telefono_oficina) values('of_9','99999')
+--------------ALMACEN---------------
+--mostrar almacen mas material y oficina
+select * from psg_almacen as a join psg_material as m on a.id_material=m.id_material join psg_oficina as o on o.id_oficina=a.id_oficina

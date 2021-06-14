@@ -10,19 +10,17 @@
     require("conexionp.php"); //Importa el archivo de la conexion a la BD
     
 // revisar
-    pg_query($conexion, "UPDATE psg_oficina 
-    set nombre_oficina='$params->nombre_oficina',
-    telefono_oficina='$params->telefono_oficina'
-    where id_oficina=$params->id_oficina");
+    pg_query($conexion, "insert into psg_oficina(nombre_oficina,telefono_oficina) 
+    values('$params->nombre_oficina','$params->telefono_oficina')
+    ");
     
     class Result {}
 
     $response = new Result();
     $response->resultado = 'OK';
-    $response->mensaje = 'Permiso Editado';
+    $response->mensaje = ' MATERIAL AGREGADO';
     
-   
+    echo json_encode($response); // Muestra el json generado
     //Envio de informacion del JSON
     header('Content-Type: application/json');
-    echo json_encode($response); // Muestra el json generado
 ?>
