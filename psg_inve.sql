@@ -12,7 +12,7 @@
  Target Server Version : 110011
  File Encoding         : 65001
 
- Date: 14/06/2021 12:39:14
+ Date: 15/06/2021 13:53:59
 */
 
 
@@ -144,7 +144,7 @@ DROP TABLE IF EXISTS "public"."psg_almacen";
 CREATE TABLE "public"."psg_almacen" (
   "id_material" int2 NOT NULL,
   "id_oficina" int2 NOT NULL,
-  "cantidad" varchar(255) COLLATE "pg_catalog"."default",
+  "cantidad" int2,
   "fecha" date
 )
 ;
@@ -152,13 +152,26 @@ CREATE TABLE "public"."psg_almacen" (
 -- ----------------------------
 -- Records of psg_almacen
 -- ----------------------------
-INSERT INTO "public"."psg_almacen" VALUES (5, 3, '3', '2021-06-08');
-INSERT INTO "public"."psg_almacen" VALUES (3, 3, '4', '2021-06-01');
-INSERT INTO "public"."psg_almacen" VALUES (3, 1, '2', '2021-02-01');
-INSERT INTO "public"."psg_almacen" VALUES (46, 10, '2', '2020-05-26');
-INSERT INTO "public"."psg_almacen" VALUES (6, 13, '5', '2021-06-08');
-INSERT INTO "public"."psg_almacen" VALUES (6, 1, '1', '2021-06-02');
-INSERT INTO "public"."psg_almacen" VALUES (5, 1, '1', '2021-03-25');
+INSERT INTO "public"."psg_almacen" VALUES (5, 3, 3, '2021-06-08');
+INSERT INTO "public"."psg_almacen" VALUES (3, 3, 4, '2021-06-01');
+INSERT INTO "public"."psg_almacen" VALUES (46, 10, 2, '2020-05-26');
+INSERT INTO "public"."psg_almacen" VALUES (6, 1, 1, '2021-06-02');
+INSERT INTO "public"."psg_almacen" VALUES (5, 1, 1, '2021-03-25');
+INSERT INTO "public"."psg_almacen" VALUES (3, 1, 1, '2021-02-01');
+INSERT INTO "public"."psg_almacen" VALUES (6, 13, 2, '2021-06-08');
+INSERT INTO "public"."psg_almacen" VALUES (46, 1, 14, '2021-06-07');
+INSERT INTO "public"."psg_almacen" VALUES (5, 6, 10, '2021-06-07');
+INSERT INTO "public"."psg_almacen" VALUES (3, 7, 11, '2021-06-15');
+INSERT INTO "public"."psg_almacen" VALUES (3, 8, 12, '2021-06-14');
+INSERT INTO "public"."psg_almacen" VALUES (46, 8, 20, '2021-06-06');
+INSERT INTO "public"."psg_almacen" VALUES (3, 10, 21, '2021-06-08');
+INSERT INTO "public"."psg_almacen" VALUES (46, 2, 38, '2021-06-15');
+INSERT INTO "public"."psg_almacen" VALUES (5, 2, 11, '2021-06-01');
+INSERT INTO "public"."psg_almacen" VALUES (6, 2, 44, '2021-06-01');
+INSERT INTO "public"."psg_almacen" VALUES (5, 13, 50, '2021-06-08');
+INSERT INTO "public"."psg_almacen" VALUES (3, 13, 22, '2021-06-23');
+INSERT INTO "public"."psg_almacen" VALUES (8, 2, 21, '2021-06-09');
+INSERT INTO "public"."psg_almacen" VALUES (8, 13, 51, '2021-06-16');
 
 -- ----------------------------
 -- Table structure for psg_cargo_usuario
@@ -174,11 +187,6 @@ CREATE TABLE "public"."psg_cargo_usuario" (
 -- ----------------------------
 -- Records of psg_cargo_usuario
 -- ----------------------------
-INSERT INTO "public"."psg_cargo_usuario" VALUES (1, 'Administrador', 'inactivo');
-INSERT INTO "public"."psg_cargo_usuario" VALUES (2, 'Asesor', 'inactivo');
-INSERT INTO "public"."psg_cargo_usuario" VALUES (4, 'provedor', 'activo');
-INSERT INTO "public"."psg_cargo_usuario" VALUES (5, 'personal2', 'activo');
-INSERT INTO "public"."psg_cargo_usuario" VALUES (3, 'Personal', 'inactivo');
 
 -- ----------------------------
 -- Table structure for psg_entrada
@@ -186,14 +194,16 @@ INSERT INTO "public"."psg_cargo_usuario" VALUES (3, 'Personal', 'inactivo');
 DROP TABLE IF EXISTS "public"."psg_entrada";
 CREATE TABLE "public"."psg_entrada" (
   "id_entrada" int2 NOT NULL DEFAULT nextval('psg_entrada_id_entrada_seq'::regclass),
-  "nombre_entrada" varchar(255) COLLATE "pg_catalog"."default",
-  "tipo_entrada" varchar(255) COLLATE "pg_catalog"."default"
+  "id_oficina" int2
 )
 ;
 
 -- ----------------------------
 -- Records of psg_entrada
 -- ----------------------------
+INSERT INTO "public"."psg_entrada" VALUES (1, NULL);
+INSERT INTO "public"."psg_entrada" VALUES (13, NULL);
+INSERT INTO "public"."psg_entrada" VALUES (2, NULL);
 
 -- ----------------------------
 -- Table structure for psg_marca_material
@@ -231,10 +241,10 @@ CREATE TABLE "public"."psg_material" (
 -- Records of psg_material
 -- ----------------------------
 INSERT INTO "public"."psg_material" VALUES (5, 2, '2021-03-10', 'viejo', 'Mesa', 'SIMBR Escritorio Gaming 200cm', 'MESA Gaming con Diseño de Forma en K, Mesa de Juegos para Ordenador Portátil, Escritorio de Oficina con Soporte de Controlador, Posavasos y Gancho para Auriculares');
-INSERT INTO "public"."psg_material" VALUES (8, 2, '2021-03-10', 'viejo', 'Mesa', 'SIMBR Escritorio Gaming 200cm', 'MESA Gaming con Diseño de Forma en K, Mesa de Juegos para Ordenador Portátil, Escritorio de Oficina con Soporte de Controlador, Posavasos y Gancho para Auriculares');
 INSERT INTO "public"."psg_material" VALUES (6, 5, '2021-10-02', 'nuevo', 'cable HDMI', '4k 2metro-Snowkids', 'Cable HDMI 2.0 de Alta Velocidad Trenzado de Nailon 4K@60Hz a 18Gbps Cable HDMI Compatible 3D, Función Ethernet, Video 4K UHD 2160p, HD 1080p- Gris');
 INSERT INTO "public"."psg_material" VALUES (3, 1, '2021-11-10', 'medio', 'Laptop Lenovo', 'Lenovo ThinkPad E14 14" FHD', 'Business Ordenador portátil, Intel Quad-Core i5 10210U hasta 4.2GHz (Beats i7-7500U), 8GB DDR4 RAM, 128GB SSD + 1TB HDD, AC WiFi, BT 5.0, Windows 10 Pro, 64GB unidad flash USB');
 INSERT INTO "public"."psg_material" VALUES (46, 1, '2021-06-15', 'nuevo', 'Impresora Epson', 'Epson EcoTank ET-2720', 'Impresora multifuncional inalámbrica a color con escáner y copiadora.');
+INSERT INTO "public"."psg_material" VALUES (8, 2, '2021-03-10', 'viejo', 'Silla', 'SIMBR Silla Gaming 200cm', 'SILLA Gaming con Diseño de Forma en K, Mesa de Juegos para Ordenador Portátil, Escritorio de Oficina con Soporte de Controlador, Posavasos y Gancho para Auriculares');
 
 -- ----------------------------
 -- Table structure for psg_material_proveedor
@@ -371,14 +381,15 @@ CREATE TABLE "public"."psg_proveedor" (
 DROP TABLE IF EXISTS "public"."psg_salida";
 CREATE TABLE "public"."psg_salida" (
   "id_salida" int2 NOT NULL DEFAULT nextval('psg_salida_id_salida_seq'::regclass),
-  "nombre_salida" varchar(255) COLLATE "pg_catalog"."default",
-  "tipo_salida" varchar(255) COLLATE "pg_catalog"."default"
+  "id_oficina" int2
 )
 ;
 
 -- ----------------------------
 -- Records of psg_salida
 -- ----------------------------
+INSERT INTO "public"."psg_salida" VALUES (2, NULL);
+INSERT INTO "public"."psg_salida" VALUES (13, NULL);
 
 -- ----------------------------
 -- Table structure for psg_tipo_material

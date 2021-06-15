@@ -39,3 +39,6 @@ insert into psg_oficina (nombre_oficina,telefono_oficina) values('of_9','99999')
 --------------ALMACEN---------------
 --mostrar almacen mas material y oficina
 select * from psg_almacen as a join psg_material as m on a.id_material=m.id_material join psg_oficina as o on o.id_oficina=a.id_oficina
+
+-- seleccionar oficina de almacen con materiales
+select * from psg_almacen as a join psg_material as m on a.id_material=m.id_material where id_oficina=1
