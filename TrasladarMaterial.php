@@ -15,7 +15,6 @@
     //Envio de informacion del JSON
     
     echo json_encode($response); // Muestra el json generado
-    header('Content-Type: application/json');
 
     pg_query($conexion, "UPDATE psg_almacen set cantidad=cantidad-$params->cantidad where id_oficina=$params->id_salida AND id_material=$params->id_material");
     pg_query($conexion, "UPDATE psg_almacen set cantidad=cantidad+$params->cantidad where id_oficina=$params->id_entrada AND id_material=$params->id_material");

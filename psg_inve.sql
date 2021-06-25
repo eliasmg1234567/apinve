@@ -12,7 +12,7 @@
  Target Server Version : 110011
  File Encoding         : 65001
 
- Date: 15/06/2021 13:53:59
+ Date: 25/06/2021 14:00:34
 */
 
 
@@ -21,17 +21,6 @@
 -- ----------------------------
 DROP SEQUENCE IF EXISTS "public"."psg_cargo_usuario_id_cargo_seq";
 CREATE SEQUENCE "public"."psg_cargo_usuario_id_cargo_seq" 
-INCREMENT 1
-MINVALUE  1
-MAXVALUE 32767
-START 1
-CACHE 1;
-
--- ----------------------------
--- Sequence structure for psg_entrada_id_entrada_seq
--- ----------------------------
-DROP SEQUENCE IF EXISTS "public"."psg_entrada_id_entrada_seq";
-CREATE SEQUENCE "public"."psg_entrada_id_entrada_seq" 
 INCREMENT 1
 MINVALUE  1
 MAXVALUE 32767
@@ -105,17 +94,6 @@ START 1
 CACHE 1;
 
 -- ----------------------------
--- Sequence structure for psg_salida_id_salida_seq
--- ----------------------------
-DROP SEQUENCE IF EXISTS "public"."psg_salida_id_salida_seq";
-CREATE SEQUENCE "public"."psg_salida_id_salida_seq" 
-INCREMENT 1
-MINVALUE  1
-MAXVALUE 32767
-START 1
-CACHE 1;
-
--- ----------------------------
 -- Sequence structure for psg_tipo_material_id_tipo_material_seq
 -- ----------------------------
 DROP SEQUENCE IF EXISTS "public"."psg_tipo_material_id_tipo_material_seq";
@@ -153,25 +131,34 @@ CREATE TABLE "public"."psg_almacen" (
 -- Records of psg_almacen
 -- ----------------------------
 INSERT INTO "public"."psg_almacen" VALUES (5, 3, 3, '2021-06-08');
-INSERT INTO "public"."psg_almacen" VALUES (3, 3, 4, '2021-06-01');
 INSERT INTO "public"."psg_almacen" VALUES (46, 10, 2, '2020-05-26');
-INSERT INTO "public"."psg_almacen" VALUES (6, 1, 1, '2021-06-02');
-INSERT INTO "public"."psg_almacen" VALUES (5, 1, 1, '2021-03-25');
-INSERT INTO "public"."psg_almacen" VALUES (3, 1, 1, '2021-02-01');
 INSERT INTO "public"."psg_almacen" VALUES (6, 13, 2, '2021-06-08');
-INSERT INTO "public"."psg_almacen" VALUES (46, 1, 14, '2021-06-07');
 INSERT INTO "public"."psg_almacen" VALUES (5, 6, 10, '2021-06-07');
-INSERT INTO "public"."psg_almacen" VALUES (3, 7, 11, '2021-06-15');
-INSERT INTO "public"."psg_almacen" VALUES (3, 8, 12, '2021-06-14');
-INSERT INTO "public"."psg_almacen" VALUES (46, 8, 20, '2021-06-06');
-INSERT INTO "public"."psg_almacen" VALUES (3, 10, 21, '2021-06-08');
-INSERT INTO "public"."psg_almacen" VALUES (46, 2, 38, '2021-06-15');
-INSERT INTO "public"."psg_almacen" VALUES (5, 2, 11, '2021-06-01');
-INSERT INTO "public"."psg_almacen" VALUES (6, 2, 44, '2021-06-01');
-INSERT INTO "public"."psg_almacen" VALUES (5, 13, 50, '2021-06-08');
-INSERT INTO "public"."psg_almacen" VALUES (3, 13, 22, '2021-06-23');
-INSERT INTO "public"."psg_almacen" VALUES (8, 2, 21, '2021-06-09');
-INSERT INTO "public"."psg_almacen" VALUES (8, 13, 51, '2021-06-16');
+INSERT INTO "public"."psg_almacen" VALUES (6, 1, 5, '2021-06-02');
+INSERT INTO "public"."psg_almacen" VALUES (3, 3, 2, '2021-06-01');
+INSERT INTO "public"."psg_almacen" VALUES (5, 1, 7, '2021-03-25');
+INSERT INTO "public"."psg_almacen" VALUES (3, 1, 3, '2021-02-01');
+INSERT INTO "public"."psg_almacen" VALUES (5, 2, 8, '2021-06-01');
+INSERT INTO "public"."psg_almacen" VALUES (46, 2, 4, '2021-06-15');
+INSERT INTO "public"."psg_almacen" VALUES (3, 7, 6, '2021-06-15');
+INSERT INTO "public"."psg_almacen" VALUES (3, 10, 6, '2021-06-08');
+INSERT INTO "public"."psg_almacen" VALUES (8, 13, 12, '2021-06-16');
+INSERT INTO "public"."psg_almacen" VALUES (5, 13, 8, '2021-06-08');
+INSERT INTO "public"."psg_almacen" VALUES (3, 13, 7, '2021-06-23');
+INSERT INTO "public"."psg_almacen" VALUES (6, 3, 2, '2021-06-17');
+INSERT INTO "public"."psg_almacen" VALUES (5, 7, 3, '2021-06-17');
+INSERT INTO "public"."psg_almacen" VALUES (6, 7, 4, '2021-06-11');
+INSERT INTO "public"."psg_almacen" VALUES (8, 2, 2, '2021-06-09');
+INSERT INTO "public"."psg_almacen" VALUES (46, 1, 3, '2021-06-07');
+INSERT INTO "public"."psg_almacen" VALUES (46, 8, 2, '2021-06-06');
+INSERT INTO "public"."psg_almacen" VALUES (3, 8, 4, '2021-06-14');
+INSERT INTO "public"."psg_almacen" VALUES (46, 7, 2, '2021-06-23');
+INSERT INTO "public"."psg_almacen" VALUES (5, 8, 2, '2021-06-24');
+INSERT INTO "public"."psg_almacen" VALUES (6, 8, 3, '2021-06-23');
+INSERT INTO "public"."psg_almacen" VALUES (3, 9, 2, '2021-06-17');
+INSERT INTO "public"."psg_almacen" VALUES (5, 9, 4, '2021-06-22');
+INSERT INTO "public"."psg_almacen" VALUES (6, 9, 2, '2021-06-21');
+INSERT INTO "public"."psg_almacen" VALUES (46, 3, 3, '2021-06-18');
 
 -- ----------------------------
 -- Table structure for psg_cargo_usuario
@@ -187,23 +174,11 @@ CREATE TABLE "public"."psg_cargo_usuario" (
 -- ----------------------------
 -- Records of psg_cargo_usuario
 -- ----------------------------
-
--- ----------------------------
--- Table structure for psg_entrada
--- ----------------------------
-DROP TABLE IF EXISTS "public"."psg_entrada";
-CREATE TABLE "public"."psg_entrada" (
-  "id_entrada" int2 NOT NULL DEFAULT nextval('psg_entrada_id_entrada_seq'::regclass),
-  "id_oficina" int2
-)
-;
-
--- ----------------------------
--- Records of psg_entrada
--- ----------------------------
-INSERT INTO "public"."psg_entrada" VALUES (1, NULL);
-INSERT INTO "public"."psg_entrada" VALUES (13, NULL);
-INSERT INTO "public"."psg_entrada" VALUES (2, NULL);
+INSERT INTO "public"."psg_cargo_usuario" VALUES (2, 'Asesor', 'inactivo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (5, 'personal2', 'activo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (3, 'Personal', 'inactivo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (1, 'Administrador', 'activo');
+INSERT INTO "public"."psg_cargo_usuario" VALUES (4, 'provedor', 'inactivo');
 
 -- ----------------------------
 -- Table structure for psg_marca_material
@@ -240,11 +215,11 @@ CREATE TABLE "public"."psg_material" (
 -- ----------------------------
 -- Records of psg_material
 -- ----------------------------
-INSERT INTO "public"."psg_material" VALUES (5, 2, '2021-03-10', 'viejo', 'Mesa', 'SIMBR Escritorio Gaming 200cm', 'MESA Gaming con Diseño de Forma en K, Mesa de Juegos para Ordenador Portátil, Escritorio de Oficina con Soporte de Controlador, Posavasos y Gancho para Auriculares');
-INSERT INTO "public"."psg_material" VALUES (6, 5, '2021-10-02', 'nuevo', 'cable HDMI', '4k 2metro-Snowkids', 'Cable HDMI 2.0 de Alta Velocidad Trenzado de Nailon 4K@60Hz a 18Gbps Cable HDMI Compatible 3D, Función Ethernet, Video 4K UHD 2160p, HD 1080p- Gris');
-INSERT INTO "public"."psg_material" VALUES (3, 1, '2021-11-10', 'medio', 'Laptop Lenovo', 'Lenovo ThinkPad E14 14" FHD', 'Business Ordenador portátil, Intel Quad-Core i5 10210U hasta 4.2GHz (Beats i7-7500U), 8GB DDR4 RAM, 128GB SSD + 1TB HDD, AC WiFi, BT 5.0, Windows 10 Pro, 64GB unidad flash USB');
-INSERT INTO "public"."psg_material" VALUES (46, 1, '2021-06-15', 'nuevo', 'Impresora Epson', 'Epson EcoTank ET-2720', 'Impresora multifuncional inalámbrica a color con escáner y copiadora.');
-INSERT INTO "public"."psg_material" VALUES (8, 2, '2021-03-10', 'viejo', 'Silla', 'SIMBR Silla Gaming 200cm', 'SILLA Gaming con Diseño de Forma en K, Mesa de Juegos para Ordenador Portátil, Escritorio de Oficina con Soporte de Controlador, Posavasos y Gancho para Auriculares');
+INSERT INTO "public"."psg_material" VALUES (5, 2, '2021-03-10', 'medio', 'Mesa 002', 'SIMBR Escritorio Gaming 200cm', 'MESA Gaming con Diseño de Forma en K, Mesa de Juegos para Ordenador Portátil, Escritorio de Oficina con Soporte de Controlador, Posavasos y Gancho para Auriculares');
+INSERT INTO "public"."psg_material" VALUES (8, 2, '2021-03-10', 'viejo', 'Silla 003', 'SIMBR Silla Gaming 200cm', 'SILLA Gaming con Diseño de Forma en K, Mesa de Juegos para Ordenador Portátil, Escritorio de Oficina con Soporte de Controlador, Posavasos y Gancho para Auriculares');
+INSERT INTO "public"."psg_material" VALUES (6, 5, '2021-10-02', 'nuevo', 'cable HDMI 001', '4k 2metro-Snowkids', 'Cable HDMI 2.0 de Alta Velocidad Trenzado de Nailon 4K@60Hz a 18Gbps Cable HDMI Compatible 3D, Función Ethernet, Video 4K UHD 2160p, HD 1080p- Gris');
+INSERT INTO "public"."psg_material" VALUES (46, 1, '2021-06-15', 'nuevo', 'Impresora Epson 012', 'Epson EcoTank ET-2720', 'Impresora multifuncional inalámbrica a color con escáner y copiadora.');
+INSERT INTO "public"."psg_material" VALUES (3, 1, '2021-11-10', 'medio', 'Laptop Lenovo 0232', 'Lenovo ThinkPad E14 14" FHD', 'Business Ordenador portátil, Intel Quad-Core i5 10210U hasta 4.2GHz (Beats i7-7500U), 8GB DDR4 RAM, 128GB SSD + 1TB HDD, AC WiFi, BT 5.0, Windows 10 Pro, 64GB unidad flash USB');
 
 -- ----------------------------
 -- Table structure for psg_material_proveedor
@@ -281,6 +256,9 @@ CREATE TABLE "public"."psg_movimiento" (
 -- ----------------------------
 -- Records of psg_movimiento
 -- ----------------------------
+INSERT INTO "public"."psg_movimiento" VALUES (6, 3, 6, 3, '2', 'motivo de prestamos', 'traslado', '2021-06-25');
+INSERT INTO "public"."psg_movimiento" VALUES (7, 3, 9, 10, '11', 'prestamo', 'traslado', '2021-06-24');
+INSERT INTO "public"."psg_movimiento" VALUES (8, 46, 6, 3, '2', 'entrega', 'traslado', '2021-06-24');
 
 -- ----------------------------
 -- Table structure for psg_oficina
@@ -296,8 +274,6 @@ CREATE TABLE "public"."psg_oficina" (
 -- ----------------------------
 -- Records of psg_oficina
 -- ----------------------------
-INSERT INTO "public"."psg_oficina" VALUES (6, 'of_3', NULL);
-INSERT INTO "public"."psg_oficina" VALUES (7, 'of_4', NULL);
 INSERT INTO "public"."psg_oficina" VALUES (8, 'of_5', NULL);
 INSERT INTO "public"."psg_oficina" VALUES (9, 'of_6', NULL);
 INSERT INTO "public"."psg_oficina" VALUES (10, 'of_7', '12345');
@@ -305,8 +281,10 @@ INSERT INTO "public"."psg_oficina" VALUES (1, 'Central', '777777');
 INSERT INTO "public"."psg_oficina" VALUES (2, 'of_1_', NULL);
 INSERT INTO "public"."psg_oficina" VALUES (3, 'of_2_', '121212');
 INSERT INTO "public"."psg_oficina" VALUES (12, 'of_9', '99999');
-INSERT INTO "public"."psg_oficina" VALUES (11, 'of_8', '8888889');
 INSERT INTO "public"."psg_oficina" VALUES (13, 'of_10', '101010');
+INSERT INTO "public"."psg_oficina" VALUES (7, 'of_4', '44 444');
+INSERT INTO "public"."psg_oficina" VALUES (11, 'of_8', '8889');
+INSERT INTO "public"."psg_oficina" VALUES (6, 'of_3', '333 333');
 
 -- ----------------------------
 -- Table structure for psg_permiso
@@ -376,22 +354,6 @@ CREATE TABLE "public"."psg_proveedor" (
 -- ----------------------------
 
 -- ----------------------------
--- Table structure for psg_salida
--- ----------------------------
-DROP TABLE IF EXISTS "public"."psg_salida";
-CREATE TABLE "public"."psg_salida" (
-  "id_salida" int2 NOT NULL DEFAULT nextval('psg_salida_id_salida_seq'::regclass),
-  "id_oficina" int2
-)
-;
-
--- ----------------------------
--- Records of psg_salida
--- ----------------------------
-INSERT INTO "public"."psg_salida" VALUES (2, NULL);
-INSERT INTO "public"."psg_salida" VALUES (13, NULL);
-
--- ----------------------------
 -- Table structure for psg_tipo_material
 -- ----------------------------
 DROP TABLE IF EXISTS "public"."psg_tipo_material";
@@ -430,15 +392,11 @@ CREATE TABLE "public"."psg_usuario" (
 -- ----------------------------
 -- Records of psg_usuario
 -- ----------------------------
-INSERT INTO "public"."psg_usuario" VALUES (1, 'walter', 'paco', '12345678', 'walter@gmail.com', 1, 'walter', 'activo', 1);
-INSERT INTO "public"."psg_usuario" VALUES (2, 'brayan', 'mamani', '1234', 'brayan@gmail.com', 2, 'brayan', 'activo', 1);
-INSERT INTO "public"."psg_usuario" VALUES (3, 'adalid', 'm', '11111', 'adalid@gmail.com', 3, 'adalid', 'activo', 2);
 INSERT INTO "public"."psg_usuario" VALUES (4, 'richard', 'ticona', '22222', 'richar@gmail.com', 2, 'sirchard', 'Activo', 1);
-INSERT INTO "public"."psg_usuario" VALUES (7, 'sara', 'vera', '55555', 'sara@gmail.com', 3, 'sara', 'Activo', 6);
 INSERT INTO "public"."psg_usuario" VALUES (10, 'juan', 'perez', '77 77  77', 'juan@gmail.com', 4, 'juan', 'Inactivo', 12);
-INSERT INTO "public"."psg_usuario" VALUES (11, 'ana', 'gutierrez', '00 00  000000', 'ana@gmail.com', 3, 'ana', 'Activo', 10);
-INSERT INTO "public"."psg_usuario" VALUES (13, 'jonas', 'bando', '999999 99999', 'jonas@gmail.com', 3, 'jonas', 'Inactivo', 11);
-INSERT INTO "public"."psg_usuario" VALUES (9, 'alicia', 'almagro', '788753', 'alicia@gmail.com', 4, 'alicia', 'Inactivo', 12);
+INSERT INTO "public"."psg_usuario" VALUES (1, 'walter', 'paco', '63209954', 'walter@gmail.com', 1, 'walter', 'activo', 1);
+INSERT INTO "public"."psg_usuario" VALUES (3, 'adalid', 'm', '767676', 'adalid@gmail.com', 3, 'adalid', 'activo', 2);
+INSERT INTO "public"."psg_usuario" VALUES (2, 'brayan', 'mamani', '777777', 'brayan@gmail.com', 2, 'brayan', 'activo', 1);
 
 -- ----------------------------
 -- Alter sequences owned by
@@ -446,13 +404,6 @@ INSERT INTO "public"."psg_usuario" VALUES (9, 'alicia', 'almagro', '788753', 'al
 ALTER SEQUENCE "public"."psg_cargo_usuario_id_cargo_seq"
 OWNED BY "public"."psg_cargo_usuario"."id_cargo";
 SELECT setval('"public"."psg_cargo_usuario_id_cargo_seq"', 13, true);
-
--- ----------------------------
--- Alter sequences owned by
--- ----------------------------
-ALTER SEQUENCE "public"."psg_entrada_id_entrada_seq"
-OWNED BY "public"."psg_entrada"."id_entrada";
-SELECT setval('"public"."psg_entrada_id_entrada_seq"', 3, false);
 
 -- ----------------------------
 -- Alter sequences owned by
@@ -473,7 +424,7 @@ SELECT setval('"public"."psg_material_id_material_seq"', 48, true);
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_movimiento_id_movimiento_seq"
 OWNED BY "public"."psg_movimiento"."id_movimiento";
-SELECT setval('"public"."psg_movimiento_id_movimiento_seq"', 3, false);
+SELECT setval('"public"."psg_movimiento_id_movimiento_seq"', 9, true);
 
 -- ----------------------------
 -- Alter sequences owned by
@@ -499,13 +450,6 @@ SELECT setval('"public"."psg_proveedor_id_proveedor_seq"', 4, false);
 -- ----------------------------
 -- Alter sequences owned by
 -- ----------------------------
-ALTER SEQUENCE "public"."psg_salida_id_salida_seq"
-OWNED BY "public"."psg_salida"."id_salida";
-SELECT setval('"public"."psg_salida_id_salida_seq"', 3, false);
-
--- ----------------------------
--- Alter sequences owned by
--- ----------------------------
 ALTER SEQUENCE "public"."psg_tipo_material_id_tipo_material_seq"
 OWNED BY "public"."psg_tipo_material"."id_tipo_material";
 SELECT setval('"public"."psg_tipo_material_id_tipo_material_seq"', 8, true);
@@ -526,11 +470,6 @@ ALTER TABLE "public"."psg_almacen" ADD CONSTRAINT "psg_almacen_pkey" PRIMARY KEY
 -- Primary Key structure for table psg_cargo_usuario
 -- ----------------------------
 ALTER TABLE "public"."psg_cargo_usuario" ADD CONSTRAINT "psg_cargo_usuario_pkey" PRIMARY KEY ("id_cargo");
-
--- ----------------------------
--- Primary Key structure for table psg_entrada
--- ----------------------------
-ALTER TABLE "public"."psg_entrada" ADD CONSTRAINT "psg_entrada_pkey" PRIMARY KEY ("id_entrada");
 
 -- ----------------------------
 -- Primary Key structure for table psg_marca_material
@@ -573,11 +512,6 @@ ALTER TABLE "public"."psg_permiso_cargo" ADD CONSTRAINT "psg_permiso_cargo_pkey"
 ALTER TABLE "public"."psg_proveedor" ADD CONSTRAINT "psg_proveedor_pkey" PRIMARY KEY ("id_proveedor");
 
 -- ----------------------------
--- Primary Key structure for table psg_salida
--- ----------------------------
-ALTER TABLE "public"."psg_salida" ADD CONSTRAINT "psg_salida_pkey" PRIMARY KEY ("id_salida");
-
--- ----------------------------
 -- Primary Key structure for table psg_tipo_material
 -- ----------------------------
 ALTER TABLE "public"."psg_tipo_material" ADD CONSTRAINT "psg_tipo_material_pkey" PRIMARY KEY ("id_tipo_material");
@@ -607,9 +541,7 @@ ALTER TABLE "public"."psg_material_proveedor" ADD CONSTRAINT "proveedor" FOREIGN
 -- ----------------------------
 -- Foreign Keys structure for table psg_movimiento
 -- ----------------------------
-ALTER TABLE "public"."psg_movimiento" ADD CONSTRAINT "entrada" FOREIGN KEY ("id_entrada") REFERENCES "public"."psg_entrada" ("id_entrada") ON DELETE NO ACTION ON UPDATE NO ACTION;
 ALTER TABLE "public"."psg_movimiento" ADD CONSTRAINT "material" FOREIGN KEY ("id_material") REFERENCES "public"."psg_material" ("id_material") ON DELETE NO ACTION ON UPDATE NO ACTION;
-ALTER TABLE "public"."psg_movimiento" ADD CONSTRAINT "salida" FOREIGN KEY ("id_salida") REFERENCES "public"."psg_salida" ("id_salida") ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 -- ----------------------------
 -- Foreign Keys structure for table psg_permiso_cargo
