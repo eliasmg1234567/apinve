@@ -10,14 +10,12 @@
     require("conexionp.php"); //Importa el archivo de la conexion a la BD
     
 // revisar
-    pg_query($conexion, "insert into psg_cargo_usuario(nombre_cargo,estado_cargo) values('$params->nombre_cargo','$params->estado_cargo')");
-    
-    
+    pg_query($conexion, "INSERT INTO psg_almacen (id_material,id_oficina,cantidad,fecha) VALUES($params->id_material,$params->id_oficina,$params->cantidad,'$params->fecha')");
     class Result {}
 
     $response = new Result();
     $response->resultado = 'OK';
-    $response->mensaje = 'CARGO AGREGADO';
+    $response->mensaje = 'INGRESO AGREGADO';
     
     echo json_encode($response); // Muestra el json generado
     //Envio de informacion del JSON

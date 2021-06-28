@@ -42,3 +42,6 @@ select * from psg_almacen as a join psg_material as m on a.id_material=m.id_mate
 
 -- seleccionar oficina de almacen con materiales
 select * from psg_almacen as a join psg_material as m on a.id_material=m.id_material where id_oficina=1
+
+----------INGRESO MATERIAL----------
+INSERT INTO psg_almacen (id_material,id_oficina,cantidad,fecha) VALUES(46,9,3,'2021-05-07')
