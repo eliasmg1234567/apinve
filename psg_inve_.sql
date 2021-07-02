@@ -12,7 +12,7 @@
  Target Server Version : 110011
  File Encoding         : 65001
 
- Date: 28/06/2021 11:51:26
+ Date: 02/07/2021 12:28:12
 */
 
 
@@ -130,39 +130,12 @@ CREATE TABLE "public"."psg_almacen" (
 -- ----------------------------
 -- Records of psg_almacen
 -- ----------------------------
-INSERT INTO "public"."psg_almacen" VALUES (5, 3, 3, '2021-06-08');
-INSERT INTO "public"."psg_almacen" VALUES (46, 10, 2, '2020-05-26');
-INSERT INTO "public"."psg_almacen" VALUES (5, 6, 7, '2021-06-07');
-INSERT INTO "public"."psg_almacen" VALUES (6, 13, 2, '2021-06-08');
-INSERT INTO "public"."psg_almacen" VALUES (5, 10, 2, '2021-06-06');
-INSERT INTO "public"."psg_almacen" VALUES (5, 1, 10, '2021-03-25');
-INSERT INTO "public"."psg_almacen" VALUES (5, 2, 10, '2021-06-25');
+INSERT INTO "public"."psg_almacen" VALUES (5, 1, 5, '2021-03-25');
+INSERT INTO "public"."psg_almacen" VALUES (8, 2, 10, '2021-07-01');
 INSERT INTO "public"."psg_almacen" VALUES (6, 1, 5, '2021-06-02');
-INSERT INTO "public"."psg_almacen" VALUES (3, 3, 2, '2021-06-01');
 INSERT INTO "public"."psg_almacen" VALUES (3, 1, 3, '2021-02-01');
-INSERT INTO "public"."psg_almacen" VALUES (3, 7, 6, '2021-06-15');
-INSERT INTO "public"."psg_almacen" VALUES (3, 10, 6, '2021-06-08');
-INSERT INTO "public"."psg_almacen" VALUES (5, 13, 8, '2021-06-08');
-INSERT INTO "public"."psg_almacen" VALUES (3, 13, 7, '2021-06-23');
-INSERT INTO "public"."psg_almacen" VALUES (6, 3, 2, '2021-06-17');
-INSERT INTO "public"."psg_almacen" VALUES (5, 7, 3, '2021-06-17');
-INSERT INTO "public"."psg_almacen" VALUES (6, 7, 4, '2021-06-11');
-INSERT INTO "public"."psg_almacen" VALUES (8, 2, 2, '2021-06-09');
 INSERT INTO "public"."psg_almacen" VALUES (46, 1, 3, '2021-06-07');
-INSERT INTO "public"."psg_almacen" VALUES (46, 8, 2, '2021-06-06');
-INSERT INTO "public"."psg_almacen" VALUES (3, 8, 4, '2021-06-14');
-INSERT INTO "public"."psg_almacen" VALUES (46, 7, 2, '2021-06-23');
-INSERT INTO "public"."psg_almacen" VALUES (5, 8, 2, '2021-06-24');
-INSERT INTO "public"."psg_almacen" VALUES (6, 8, 3, '2021-06-23');
-INSERT INTO "public"."psg_almacen" VALUES (3, 9, 2, '2021-06-17');
-INSERT INTO "public"."psg_almacen" VALUES (5, 9, 4, '2021-06-22');
-INSERT INTO "public"."psg_almacen" VALUES (6, 9, 2, '2021-06-21');
-INSERT INTO "public"."psg_almacen" VALUES (46, 3, 3, '2021-06-18');
-INSERT INTO "public"."psg_almacen" VALUES (46, 9, 3, '2021-05-07');
-INSERT INTO "public"."psg_almacen" VALUES (6, 10, 4, '2021-06-28');
 INSERT INTO "public"."psg_almacen" VALUES (8, 1, 4, '2021-06-28');
-INSERT INTO "public"."psg_almacen" VALUES (8, 9, 4, '2021-06-28');
-INSERT INTO "public"."psg_almacen" VALUES (8, 13, 14, '2021-06-16');
 
 -- ----------------------------
 -- Table structure for psg_cargo_usuario
@@ -294,6 +267,7 @@ INSERT INTO "public"."psg_oficina" VALUES (13, 'of_10', '101010');
 INSERT INTO "public"."psg_oficina" VALUES (7, 'of_4', '44 444');
 INSERT INTO "public"."psg_oficina" VALUES (11, 'of_8', '8889');
 INSERT INTO "public"."psg_oficina" VALUES (6, 'of_3', '333 333');
+INSERT INTO "public"."psg_oficina" VALUES (15, 'of_11', '(111) 111 111');
 
 -- ----------------------------
 -- Table structure for psg_permiso
@@ -440,7 +414,7 @@ SELECT setval('"public"."psg_movimiento_id_movimiento_seq"', 13, true);
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_oficina_id_oficina_seq"
 OWNED BY "public"."psg_oficina"."id_oficina";
-SELECT setval('"public"."psg_oficina_id_oficina_seq"', 15, true);
+SELECT setval('"public"."psg_oficina_id_oficina_seq"', 16, true);
 
 -- ----------------------------
 -- Alter sequences owned by
