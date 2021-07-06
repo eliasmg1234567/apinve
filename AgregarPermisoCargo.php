@@ -9,7 +9,7 @@
 
     require("conexionp.php"); //Importa el archivo de la conexion a la BD
     
-/* revisar
+/* revisar 
 for ($i = 0; $i < count($lote1); $i++){
     $sql1="INSERT INTO pedidos (lote,cantidad,unidad,conceptos,costo) VALUES '".$lote1[$i]."','".$cantidad[$i]."','".$unidad[$i]."','".$conceptos[$i]."','".$costo[$i]."')";
     }
