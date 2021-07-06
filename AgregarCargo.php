@@ -12,7 +12,7 @@
 // revisar
     pg_query($conexion, "insert into psg_cargo_usuario(nombre_cargo,estado_cargo) values('$params->nombre_cargo','$params->estado_cargo')");
     
-    
+        
     class Result {}
 
     $response = new Result();
