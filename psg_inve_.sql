@@ -12,7 +12,7 @@
  Target Server Version : 110011
  File Encoding         : 65001
 
- Date: 02/07/2021 12:28:12
+ Date: 14/07/2021 11:32:38
 */
 
 
@@ -132,6 +132,7 @@ CREATE TABLE "public"."psg_almacen" (
 -- ----------------------------
 INSERT INTO "public"."psg_almacen" VALUES (5, 1, 5, '2021-03-25');
 INSERT INTO "public"."psg_almacen" VALUES (8, 2, 10, '2021-07-01');
+INSERT INTO "public"."psg_almacen" VALUES (49, 12, 4, '2021-07-06');
 INSERT INTO "public"."psg_almacen" VALUES (6, 1, 5, '2021-06-02');
 INSERT INTO "public"."psg_almacen" VALUES (3, 1, 3, '2021-02-01');
 INSERT INTO "public"."psg_almacen" VALUES (46, 1, 3, '2021-06-07');
@@ -198,6 +199,8 @@ INSERT INTO "public"."psg_material" VALUES (8, 2, '2021-03-10', 'viejo', 'Silla 
 INSERT INTO "public"."psg_material" VALUES (6, 5, '2021-10-02', 'nuevo', 'cable HDMI 001', '4k 2metro-Snowkids', 'Cable HDMI 2.0 de Alta Velocidad Trenzado de Nailon 4K@60Hz a 18Gbps Cable HDMI Compatible 3D, Función Ethernet, Video 4K UHD 2160p, HD 1080p- Gris');
 INSERT INTO "public"."psg_material" VALUES (46, 1, '2021-06-15', 'nuevo', 'Impresora Epson 012', 'Epson EcoTank ET-2720', 'Impresora multifuncional inalámbrica a color con escáner y copiadora.');
 INSERT INTO "public"."psg_material" VALUES (3, 1, '2021-11-10', 'medio', 'Laptop Lenovo 0232', 'Lenovo ThinkPad E14 14" FHD', 'Business Ordenador portátil, Intel Quad-Core i5 10210U hasta 4.2GHz (Beats i7-7500U), 8GB DDR4 RAM, 128GB SSD + 1TB HDD, AC WiFi, BT 5.0, Windows 10 Pro, 64GB unidad flash USB');
+INSERT INTO "public"."psg_material" VALUES (49, 3, '2021-07-06', 'nuevo', 'pizarra', 'pizarra blanca', 'tamaño 3m x 5 m');
+INSERT INTO "public"."psg_material" VALUES (50, 1, '2021-07-14', 'nuevo', 'Monitor LG', 'LG 25UM58-P - Monitor Profesional UltraWide', 'WFHD de 63.5 cm (25") con Panel IPS (2560 x 1080 píxeles, 21:9, 250 cd/m², sRGB >99%, 1000:1, 5 ms GtG, 75 Hz, HDMIx2, Auriculares) Color Negro');
 
 -- ----------------------------
 -- Table structure for psg_material_proveedor
@@ -400,7 +403,7 @@ SELECT setval('"public"."psg_marca_material_id_marca_seq"', 4, true);
 -- ----------------------------
 ALTER SEQUENCE "public"."psg_material_id_material_seq"
 OWNED BY "public"."psg_material"."id_material";
-SELECT setval('"public"."psg_material_id_material_seq"', 49, true);
+SELECT setval('"public"."psg_material_id_material_seq"', 51, true);
 
 -- ----------------------------
 -- Alter sequences owned by
